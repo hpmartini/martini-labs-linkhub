@@ -36,7 +36,7 @@ export const BlogFeed: React.FC = () => {
       </div>
 
       {isLoading ? (
-        <div className="w-full p-8 border border-zinc-800 rounded-2xl bg-black/20 backdrop-blur-sm flex flex-col items-center justify-center gap-3">
+        <div className="w-full p-8 border border-zinc-800 rounded-2xl bg-black/20 backdrop-blur-lg flex flex-col items-center justify-center gap-3">
            <div className="flex gap-1">
               <span className="w-1 h-8 bg-cyan-500/50 animate-[pulse_1s_ease-in-out_infinite]"></span>
               <span className="w-1 h-6 bg-cyan-500/50 animate-[pulse_1.2s_ease-in-out_infinite]"></span>
@@ -46,7 +46,7 @@ export const BlogFeed: React.FC = () => {
            <span className="text-xs font-orbitron text-cyan-500/80 animate-pulse tracking-widest">SCANNING FREQUENCIES...</span>
         </div>
       ) : error || posts.length === 0 ? (
-        <div className="w-full p-6 text-center border border-zinc-800/50 rounded-xl bg-black/40 flex flex-col items-center gap-2">
+        <div className="w-full p-6 text-center border border-zinc-800/50 rounded-xl bg-black/70 flex flex-col items-center gap-2">
            <p className="text-zinc-500 text-xs font-mono">SIGNAL INTERFERENCE DETECTED.</p>
            <button 
              onClick={loadPosts}
@@ -66,7 +66,7 @@ export const BlogFeed: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`
-                  group relative flex flex-col justify-between p-5 rounded-xl border bg-zinc-900/40 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 overflow-hidden
+                  group relative flex flex-col justify-between p-5 rounded-xl border bg-zinc-900/40 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden
                   ${isMartini 
                     ? 'border-cyan-500/20 hover:border-cyan-400/50' 
                     : 'border-pink-500/20 hover:border-pink-400/50'}

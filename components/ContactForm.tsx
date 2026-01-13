@@ -42,7 +42,7 @@ export const ContactForm: React.FC = () => {
         <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-pink-500"></div>
       </div>
 
-      <div className="relative p-6 md:p-8 rounded-2xl bg-zinc-900/40 backdrop-blur-md border border-pink-500/10 hover:border-pink-500/30 transition-all duration-500 group">
+      <div className="relative p-6 md:p-8 rounded-2xl bg-zinc-900/40 backdrop-blur-xl border border-pink-500/10 hover:border-pink-500/30 transition-all duration-500 group">
         
         {/* Decorative elements */}
         <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-pink-500"></div>
@@ -77,7 +77,7 @@ export const ContactForm: React.FC = () => {
                   id="name"
                   required
                   placeholder="John Doe"
-                  className="w-full bg-black/40 border border-zinc-800 rounded-lg px-4 py-3 text-zinc-100 placeholder-zinc-700 focus:outline-none focus:border-pink-500/50 focus:ring-1 focus:ring-pink-500/50 transition-all"
+                  className="w-full bg-black/70 border border-zinc-800 rounded-lg px-4 py-3 text-zinc-100 placeholder-zinc-700 focus:outline-none focus:border-pink-500/50 focus:ring-1 focus:ring-pink-500/50 transition-all"
                 />
               </div>
               <div className="space-y-2">
@@ -88,7 +88,7 @@ export const ContactForm: React.FC = () => {
                   id="email"
                   required
                   placeholder="john@example.com"
-                  className="w-full bg-black/40 border border-zinc-800 rounded-lg px-4 py-3 text-zinc-100 placeholder-zinc-700 focus:outline-none focus:border-pink-500/50 focus:ring-1 focus:ring-pink-500/50 transition-all"
+                  className="w-full bg-black/70 border border-zinc-800 rounded-lg px-4 py-3 text-zinc-100 placeholder-zinc-700 focus:outline-none focus:border-pink-500/50 focus:ring-1 focus:ring-pink-500/50 transition-all"
                 />
               </div>
             </div>
@@ -101,7 +101,7 @@ export const ContactForm: React.FC = () => {
                 required
                 rows={4}
                 placeholder="Enter your message here..."
-                className="w-full bg-black/40 border border-zinc-800 rounded-lg px-4 py-3 text-zinc-100 placeholder-zinc-700 focus:outline-none focus:border-pink-500/50 focus:ring-1 focus:ring-pink-500/50 transition-all resize-none"
+                className="w-full bg-black/70 border border-zinc-800 rounded-lg px-4 py-3 text-zinc-100 placeholder-zinc-700 focus:outline-none focus:border-pink-500/50 focus:ring-1 focus:ring-pink-500/50 transition-all resize-none"
               ></textarea>
             </div>
 

@@ -68,7 +68,7 @@ export const AIChat: React.FC = () => {
           )}
         </div>
 
-        <div className="p-4 bg-black/40 border-t border-zinc-800 flex gap-2">
+        <div className="p-4 bg-black/70 border-t border-zinc-800 flex gap-2">
           <input
             type="text"
             value={input}

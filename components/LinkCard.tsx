@@ -79,7 +79,7 @@ export const LinkCard: React.FC<LinkCardProps> = ({ link, isProminent }) => {
         <div className="flex items-center gap-4 md:gap-6">
           {link.icon && (
             <div className={`
-              p-3 rounded-lg bg-zinc-900/80 border transition-all duration-300 backdrop-blur-sm
+              p-3 rounded-lg bg-zinc-900/80 border transition-all duration-300 backdrop-blur-lg
               ${isCyan ? 'border-cyan-500/20 text-cyan-400 group-hover:shadow-[0_0_10px_rgba(0,255,255,0.3)]' : 'border-pink-500/20 text-pink-400 group-hover:shadow-[0_0_10px_rgba(255,0,255,0.3)]'}
             `}>
               <svg 
@@ -107,7 +107,7 @@ export const LinkCard: React.FC<LinkCardProps> = ({ link, isProminent }) => {
           </div>
         </div>
         
-        <div className={`p-2 rounded-full border border-white/10 bg-black/20 backdrop-blur-md transition-all duration-300 ${isCyan ? 'group-hover:bg-cyan-500/20 group-hover:text-cyan-400' : 'group-hover:bg-pink-500/20 group-hover:text-pink-400'}`}>
+        <div className={`p-2 rounded-full border border-white/10 bg-black/20 backdrop-blur-xl transition-all duration-300 ${isCyan ? 'group-hover:bg-cyan-500/20 group-hover:text-cyan-400' : 'group-hover:bg-pink-500/20 group-hover:text-pink-400'}`}>
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
             className="h-5 w-5" 

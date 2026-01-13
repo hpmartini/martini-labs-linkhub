@@ -35,7 +35,7 @@ export const SocialFeed: React.FC = () => {
   const FallbackView = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
         {linkedInUrl && (
-            <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" className="group relative flex items-center justify-between p-6 rounded-xl border border-cyan-500/30 bg-zinc-900/40 backdrop-blur-md hover:bg-cyan-900/10 transition-all duration-300">
+            <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" className="group relative flex items-center justify-between p-6 rounded-xl border border-cyan-500/30 bg-zinc-900/40 backdrop-blur-xl hover:bg-cyan-900/10 transition-all duration-300">
                 <div className="flex flex-col">
                     <span className="text-cyan-400 font-orbitron tracking-widest text-xs uppercase mb-1">Encrypted Link</span>
                     <span className="text-zinc-100 font-bold text-lg">Connect on LinkedIn</span>
@@ -47,7 +47,7 @@ export const SocialFeed: React.FC = () => {
             </a>
         )}
         {twitterUrl && (
-            <a href={twitterUrl} target="_blank" rel="noopener noreferrer" className="group relative flex items-center justify-between p-6 rounded-xl border border-pink-500/30 bg-zinc-900/40 backdrop-blur-md hover:bg-pink-900/10 transition-all duration-300">
+            <a href={twitterUrl} target="_blank" rel="noopener noreferrer" className="group relative flex items-center justify-between p-6 rounded-xl border border-pink-500/30 bg-zinc-900/40 backdrop-blur-xl hover:bg-pink-900/10 transition-all duration-300">
                 <div className="flex flex-col">
                     <span className="text-pink-400 font-orbitron tracking-widest text-xs uppercase mb-1">Encrypted Link</span>
                     <span className="text-zinc-100 font-bold text-lg">Follow on X</span>
@@ -72,7 +72,7 @@ export const SocialFeed: React.FC = () => {
       </div>
 
       {isLoading ? (
-        <div className="w-full p-8 border border-zinc-800 rounded-2xl bg-black/20 backdrop-blur-sm flex flex-col items-center justify-center gap-3">
+        <div className="w-full p-8 border border-zinc-800 rounded-2xl bg-black/20 backdrop-blur-lg flex flex-col items-center justify-center gap-3">
            <div className="flex gap-1">
               <span className="w-1.5 h-1.5 rounded-full bg-pink-500/50 animate-bounce"></span>
               <span className="w-1.5 h-1.5 rounded-full bg-pink-500/50 animate-bounce [animation-delay:-0.15s]"></span>
@@ -103,7 +103,7 @@ export const SocialFeed: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`
-                  group relative flex flex-col p-5 rounded-xl border bg-zinc-900/40 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 overflow-hidden
+                  group relative flex flex-col p-5 rounded-xl border bg-zinc-900/40 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden
                   ${borderColor}
                 `}
               >

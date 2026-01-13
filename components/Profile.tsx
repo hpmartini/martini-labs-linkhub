@@ -52,7 +52,7 @@ export const Profile: React.FC<ProfileProps> = ({ name, title1, title2, company,
           </h1>
           
           <div className="flex flex-col items-center space-y-1">
-            <span className="text-cyan-400 font-bold tracking-[0.3em] uppercase text-xs md:text-sm drop-shadow-[0_2px_3px_rgba(0,0,0,0.9)] bg-black/40 px-4 py-0.5 rounded-full border border-cyan-500/10">
+            <span className="text-cyan-400 font-bold tracking-[0.3em] uppercase text-xs md:text-sm drop-shadow-[0_2px_3px_rgba(0,0,0,0.9)] bg-black/70 px-4 py-0.5 rounded-full border border-cyan-500/10">
               {title1}
               <br />
               {title2}
