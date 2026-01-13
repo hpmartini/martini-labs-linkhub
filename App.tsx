@@ -24,7 +24,8 @@ const App: React.FC = () => {
       <div className="relative z-10 w-full max-w-xl flex flex-col items-center gap-8">
         <Profile 
           name="Hans-Peter Martini"
-          title="Geschäftsführer"
+          title1="Softwareentwickler/"
+          title2="Geschäftsführer von"
           company="Martini Labs GmbH"
           brand="Schwälmer Softwarehaus"
         />

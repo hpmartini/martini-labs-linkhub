@@ -3,12 +3,13 @@ import React from 'react';
 
 interface ProfileProps {
   name: string;
-  title: string;
+  title1: string;
+  title2: string;
   company: string;
   brand: string;
 }
 
-export const Profile: React.FC<ProfileProps> = ({ name, title, company, brand }) => {
+export const Profile: React.FC<ProfileProps> = ({ name, title1, title2, company, brand }) => {
   const scrollToContact = (e: React.MouseEvent) => {
     e.preventDefault();
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -21,15 +22,10 @@ export const Profile: React.FC<ProfileProps> = ({ name, title, company, brand })
         <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-pink-500 rounded-full blur-md opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
         <div className="relative w-32 h-32 rounded-full border-2 border-white/30 overflow-hidden bg-black shadow-2xl">
           <img 
-            src="https://picsum.photos/seed/hanspeter/400" 
+            src="images/hape.jpeg" 
             alt={name} 
             className="w-full h-full object-cover grayscale-[0.2] contrast-125"
           />
-        </div>
-        
-        {/* Status Badge */}
-        <div className="absolute -bottom-2 -right-2 bg-pink-600 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase border border-white/20 shadow-[0_0_15px_rgba(219,39,119,0.5)] z-20">
-          Online
         </div>
 
         {/* Message Badge / Contact Link */}
@@ -57,7 +53,9 @@ export const Profile: React.FC<ProfileProps> = ({ name, title, company, brand })
           
           <div className="flex flex-col items-center space-y-1">
             <span className="text-cyan-400 font-bold tracking-[0.3em] uppercase text-xs md:text-sm drop-shadow-[0_2px_3px_rgba(0,0,0,0.9)] bg-black/40 px-4 py-0.5 rounded-full border border-cyan-500/10">
-              {title}
+              {title1}
+              <br />
+              {title2}
             </span>
             <span className="text-zinc-200 font-semibold text-lg md:text-xl drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">
               {company}
