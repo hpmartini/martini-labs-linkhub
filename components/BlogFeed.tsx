@@ -29,14 +29,14 @@ export const BlogFeed: React.FC = () => {
     <div className="w-full mt-12 animate-fade-in">
       <div className="flex items-center justify-center gap-4 mb-6">
         <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-zinc-500"></div>
-        <h2 className="text-[10px] font-orbitron tracking-[0.4em] text-zinc-300 uppercase">
+        <h2 className="text-[10px] font-orbitron tracking-[0.4em] text-zinc-100 uppercase">
           Incoming Transmissions
         </h2>
         <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-zinc-500"></div>
       </div>
 
       {isLoading ? (
-        <div className="w-full p-8 border border-zinc-800 rounded-2xl bg-black/20 backdrop-blur-lg flex flex-col items-center justify-center gap-3">
+        <div className="w-full p-8 border border-zinc-800 rounded-2xl bg-black/20 backdrop-blur-sm flex flex-col items-center justify-center gap-3">
            <div className="flex gap-1">
               <span className="w-1 h-8 bg-cyan-500/50 animate-[pulse_1s_ease-in-out_infinite]"></span>
               <span className="w-1 h-6 bg-cyan-500/50 animate-[pulse_1.2s_ease-in-out_infinite]"></span>
@@ -46,8 +46,8 @@ export const BlogFeed: React.FC = () => {
            <span className="text-xs font-orbitron text-cyan-500/80 animate-pulse tracking-widest">SCANNING FREQUENCIES...</span>
         </div>
       ) : error || posts.length === 0 ? (
-        <div className="w-full p-6 text-center border border-zinc-800/50 rounded-xl bg-black/70 flex flex-col items-center gap-2">
-           <p className="text-zinc-500 text-xs font-mono">SIGNAL INTERFERENCE DETECTED.</p>
+        <div className="w-full p-6 text-center border border-zinc-800/50 rounded-xl bg-black/70 flex flex-col items-center gap-2 backdrop-blur-md">
+           <p className="text-zinc-300 text-xs font-mono">SIGNAL INTERFERENCE DETECTED.</p>
            <button 
              onClick={loadPosts}
              className="mt-2 text-[10px] font-orbitron text-cyan-400 border border-cyan-500/30 px-3 py-1 rounded hover:bg-cyan-900/20 transition-colors"

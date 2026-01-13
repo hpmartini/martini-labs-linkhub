@@ -32,7 +32,7 @@ const App: React.FC = () => {
 
         {/* Primary Website Links - Prominent Cards */}
         <div className="w-full space-y-6">
-          <h2 className="text-center text-[10px] font-orbitron tracking-[0.4em] text-zinc-300 uppercase">Core Ventures</h2>
+          <h2 className="text-center text-[10px] font-orbitron tracking-[0.4em] text-zinc-200 uppercase">Core Ventures</h2>
           <div className="space-y-4">
             {PRIMARY_LINKS.map((link) => (
               <LinkCard key={link.url} link={link} isProminent={true} />
@@ -42,7 +42,7 @@ const App: React.FC = () => {
 
         {/* Social Links - Just Icons */}
         <div className="w-full">
-           <h2 className="text-center text-[10px] font-orbitron tracking-[0.4em] text-zinc300 uppercase mb-6">Connect</h2>
+           <h2 className="text-center text-[10px] font-orbitron tracking-[0.4em] text-zinc-200 uppercase mb-6">Connect</h2>
            <SocialIcons links={SOCIAL_LINKS} />
         </div>
 

@@ -64,15 +64,15 @@ export const SocialFeed: React.FC = () => {
   return (
     <div className="w-full mt-12 animate-fade-in mb-12">
       <div className="flex items-center justify-center gap-4 mb-6">
-        <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-zinc-500"></div>
-        <h2 className="text-[10px] font-orbitron tracking-[0.4em] text-zinc-300 uppercase">
+        <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-zinc-300"></div>
+        <h2 className="text-[10px] font-orbitron tracking-[0.4em] text-zinc-200 uppercase">
           Social Uplink
         </h2>
-        <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-zinc-500"></div>
+        <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-zinc-300"></div>
       </div>
 
       {isLoading ? (
-        <div className="w-full p-8 border border-zinc-800 rounded-2xl bg-black/20 backdrop-blur-lg flex flex-col items-center justify-center gap-3">
+        <div className="w-full p-8 border border-zinc-800 rounded-2xl bg-black/20 backdrop-blur-sm flex flex-col items-center justify-center gap-3">
            <div className="flex gap-1">
               <span className="w-1.5 h-1.5 rounded-full bg-pink-500/50 animate-bounce"></span>
               <span className="w-1.5 h-1.5 rounded-full bg-pink-500/50 animate-bounce [animation-delay:-0.15s]"></span>
@@ -82,7 +82,7 @@ export const SocialFeed: React.FC = () => {
         </div>
       ) : (posts.length === 0 || hasError) ? (
         <div className="w-full flex flex-col items-center animate-fade-in">
-           <div className="mb-4 text-xs text-zinc-500 font-mono text-center">
+           <div className="mb-4 text-xs text-zinc-200 font-mono text-center">
               <p>DIRECT FEED SIGNAL BLOCKED BY PROTOCOL.</p>
               <p>ESTABLISH MANUAL UPLINK BELOW.</p>
            </div>

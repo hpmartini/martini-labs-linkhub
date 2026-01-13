@@ -79,7 +79,7 @@ export const LinkCard: React.FC<LinkCardProps> = ({ link, isProminent }) => {
         <div className="flex items-center gap-4 md:gap-6">
           {link.icon && (
             <div className={`
-              p-3 rounded-lg bg-zinc-900/80 border transition-all duration-300 backdrop-blur-lg
+              p-3 rounded-lg bg-zinc-900/80 border transition-all duration-300 backdrop-blur-sm
               ${isCyan ? 'border-cyan-500/20 text-cyan-400 group-hover:shadow-[0_0_10px_rgba(0,255,255,0.3)]' : 'border-pink-500/20 text-pink-400 group-hover:shadow-[0_0_10px_rgba(255,0,255,0.3)]'}
             `}>
               <svg 
