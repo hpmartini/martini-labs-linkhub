@@ -1,29 +1,40 @@
 
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { BlogPost } from '../types';
-import { fetchLatestBlogPosts } from '../services/gemini';
+import { fetchLatestBlogPosts } from '../services/rss';
 
 export const BlogFeed: React.FC = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
+  const mountedRef = useRef(true);
 
-  const loadPosts = useCallback(async () => {
+  const loadPosts = async () => {
     setIsLoading(true);
     setError(false);
     try {
       const data = await fetchLatestBlogPosts();
-      setPosts(data);
+      if (mountedRef.current) {
+        setPosts(data);
+      }
     } catch (e) {
-      setError(true);
+      if (mountedRef.current) {
+        setError(true);
+      }
     } finally {
-      setIsLoading(false);
+      if (mountedRef.current) {
+        setIsLoading(false);
+      }
     }
-  }, []);
+  };
 
   useEffect(() => {
+    mountedRef.current = true;
     loadPosts();
-  }, [loadPosts]);
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
 
   return (
     <div className="w-full mt-12 animate-fade-in">
@@ -57,11 +68,11 @@ export const BlogFeed: React.FC = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {posts.map((post, index) => {
+          {posts.map((post) => {
             const isMartini = post.source.toLowerCase().includes('martini');
             return (
-              <a 
-                key={index}
+              <a
+                key={post.url}
                 href={post.url}
                 target="_blank"
                 rel="noopener noreferrer"

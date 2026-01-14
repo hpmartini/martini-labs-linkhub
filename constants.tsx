@@ -56,6 +56,22 @@ export const SOCIAL_LINKS: LinkItem[] = [
   }
 ];
 
+export interface BlogSource {
+  name: string;
+  feedUrl: string;
+}
+
+export const BLOG_SOURCES: BlogSource[] = [
+  {
+    name: 'Martini Labs',
+    feedUrl: 'https://www.martini-labs.de/feed.xml'
+  },
+  {
+    name: 'Schwaelmer Softwarehaus',
+    feedUrl: 'https://www.schwaelmer-softwarehaus.de/rss.xml'
+  }
+];
+
 export const SYSTEM_INSTRUCTION = `
 You are the Digital Twin of Hans-Peter Martini, CEO (Geschäftsführer) of Martini Labs GmbH and Schwaelmer Softwarehaus.
 Your personality is professional yet innovative, tech-savvy, and rooted in German software craftsmanship.
