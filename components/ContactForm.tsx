@@ -1,7 +1,9 @@
 
 import React, { useState } from 'react';
+import { useTheme } from '../themes/ThemeContext';
 
 export const ContactForm: React.FC = () => {
+  const theme = useTheme();
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -32,36 +34,68 @@ export const ContactForm: React.FC = () => {
     }
   };
 
+  const cardBg = theme.isDark ? 'bg-zinc-900/40' : 'bg-white/80';
+  const inputBg = theme.isDark ? 'bg-black/70' : 'bg-gray-50';
+  const inputBorder = theme.isDark ? 'border-zinc-800' : 'border-gray-200';
+  const inputText = theme.isDark ? 'text-zinc-100' : 'text-gray-900';
+  const placeholderClass = theme.isDark ? 'placeholder-zinc-700' : 'placeholder-gray-400';
+
   return (
     <div id="contact" className="w-full mt-16 mb-8 animate-fade-in scroll-mt-24">
        <div className="flex items-center justify-center gap-4 mb-8">
-        <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-pink-500"></div>
-        <h2 className="text-[10px] font-orbitron tracking-[0.4em] text-zinc-300 uppercase">
-          Transmission Uplink
+        <div
+          className="h-[1px] w-12"
+          style={{ background: `linear-gradient(to right, transparent, ${theme.colors.secondary})` }}
+        />
+        <h2
+          className="text-[10px] tracking-[0.4em] uppercase"
+          style={{ fontFamily: theme.fonts.heading, color: theme.colors.textMuted }}
+        >
+          {theme.isDark ? 'Transmission Uplink' : 'Contact'}
         </h2>
-        <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-pink-500"></div>
+        <div
+          className="h-[1px] w-12"
+          style={{ background: `linear-gradient(to left, transparent, ${theme.colors.secondary})` }}
+        />
       </div>
 
-      <div className="relative p-6 md:p-8 rounded-2xl bg-zinc-900/40 backdrop-blur-xl border border-pink-500/10 hover:border-pink-500/30 transition-all duration-500 group">
-        
+      <div
+        className={`relative p-6 md:p-8 rounded-2xl ${cardBg} backdrop-blur-xl border transition-all duration-500 group`}
+        style={{ borderColor: `rgba(${theme.colors.secondaryRgb}, 0.1)` }}
+      >
+
         {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-pink-500"></div>
-        <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-pink-500"></div>
-        <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-pink-500"></div>
-        <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-pink-500"></div>
+        <div className="absolute top-0 left-0 w-2 h-2 border-t border-l" style={{ borderColor: theme.colors.secondary }}></div>
+        <div className="absolute top-0 right-0 w-2 h-2 border-t border-r" style={{ borderColor: theme.colors.secondary }}></div>
+        <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l" style={{ borderColor: theme.colors.secondary }}></div>
+        <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r" style={{ borderColor: theme.colors.secondary }}></div>
 
         {status === 'success' ? (
            <div className="text-center py-12">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-pink-500/20 text-pink-400 mb-4 animate-bounce">
+              <div
+                className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4 animate-bounce"
+                style={{
+                  backgroundColor: `rgba(${theme.colors.secondaryRgb}, 0.2)`,
+                  color: theme.colors.secondary
+                }}
+              >
                 <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="text-xl font-orbitron text-white mb-2">Transmission Sent</h3>
-              <p className="text-zinc-400 text-sm">We will establish contact shortly.</p>
-              <button 
+              <h3
+                className="text-xl mb-2"
+                style={{ fontFamily: theme.fonts.heading, color: theme.colors.text }}
+              >
+                {theme.isDark ? 'Transmission Sent' : 'Message Sent'}
+              </h3>
+              <p style={{ color: theme.colors.textMuted }} className="text-sm">
+                {theme.isDark ? 'We will establish contact shortly.' : 'We will get back to you soon.'}
+              </p>
+              <button
                 onClick={() => setStatus('idle')}
-                className="mt-6 text-xs text-pink-400 hover:text-pink-300 underline underline-offset-4"
+                className="mt-6 text-xs underline underline-offset-4"
+                style={{ color: theme.colors.secondary }}
               >
                 Send another message
               </button>
@@ -70,58 +104,100 @@ export const ContactForm: React.FC = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label htmlFor="name" className="text-xs font-orbitron text-pink-400/80 uppercase tracking-wider ml-1">Identity</label>
-                <input 
-                  type="text" 
-                  name="name" 
+                <label
+                  htmlFor="name"
+                  className="text-xs uppercase tracking-wider ml-1"
+                  style={{ fontFamily: theme.fonts.heading, color: `rgba(${theme.colors.secondaryRgb}, 0.8)` }}
+                >
+                  {theme.isDark ? 'Identity' : 'Name'}
+                </label>
+                <input
+                  type="text"
+                  name="name"
                   id="name"
                   required
                   placeholder="John Doe"
-                  className="w-full bg-black/70 border border-zinc-800 rounded-lg px-4 py-3 text-zinc-100 placeholder-zinc-700 focus:outline-none focus:border-pink-500/50 focus:ring-1 focus:ring-pink-500/50 transition-all"
+                  className={`w-full ${inputBg} border ${inputBorder} rounded-lg px-4 py-3 ${inputText} ${placeholderClass} focus:outline-none transition-all`}
+                  style={{
+                    borderColor: inputBorder,
+                  }}
+                  onFocus={(e) => e.target.style.borderColor = `rgba(${theme.colors.secondaryRgb}, 0.5)`}
+                  onBlur={(e) => e.target.style.borderColor = ''}
                 />
               </div>
               <div className="space-y-2">
-                <label htmlFor="email" className="text-xs font-orbitron text-pink-400/80 uppercase tracking-wider ml-1">Frequency (Email)</label>
-                <input 
-                  type="email" 
-                  name="email" 
+                <label
+                  htmlFor="email"
+                  className="text-xs uppercase tracking-wider ml-1"
+                  style={{ fontFamily: theme.fonts.heading, color: `rgba(${theme.colors.secondaryRgb}, 0.8)` }}
+                >
+                  {theme.isDark ? 'Frequency (Email)' : 'Email'}
+                </label>
+                <input
+                  type="email"
+                  name="email"
                   id="email"
                   required
                   placeholder="john@example.com"
-                  className="w-full bg-black/70 border border-zinc-800 rounded-lg px-4 py-3 text-zinc-100 placeholder-zinc-700 focus:outline-none focus:border-pink-500/50 focus:ring-1 focus:ring-pink-500/50 transition-all"
+                  className={`w-full ${inputBg} border ${inputBorder} rounded-lg px-4 py-3 ${inputText} ${placeholderClass} focus:outline-none transition-all`}
+                  onFocus={(e) => e.target.style.borderColor = `rgba(${theme.colors.secondaryRgb}, 0.5)`}
+                  onBlur={(e) => e.target.style.borderColor = ''}
                 />
               </div>
             </div>
-            
+
             <div className="space-y-2">
-              <label htmlFor="message" className="text-xs font-orbitron text-pink-400/80 uppercase tracking-wider ml-1">Data Packet</label>
-              <textarea 
-                name="message" 
+              <label
+                htmlFor="message"
+                className="text-xs uppercase tracking-wider ml-1"
+                style={{ fontFamily: theme.fonts.heading, color: `rgba(${theme.colors.secondaryRgb}, 0.8)` }}
+              >
+                {theme.isDark ? 'Data Packet' : 'Message'}
+              </label>
+              <textarea
+                name="message"
                 id="message"
                 required
                 rows={4}
                 placeholder="Enter your message here..."
-                className="w-full bg-black/70 border border-zinc-800 rounded-lg px-4 py-3 text-zinc-100 placeholder-zinc-700 focus:outline-none focus:border-pink-500/50 focus:ring-1 focus:ring-pink-500/50 transition-all resize-none"
+                className={`w-full ${inputBg} border ${inputBorder} rounded-lg px-4 py-3 ${inputText} ${placeholderClass} focus:outline-none transition-all resize-none`}
+                onFocus={(e) => e.target.style.borderColor = `rgba(${theme.colors.secondaryRgb}, 0.5)`}
+                onBlur={(e) => e.target.style.borderColor = ''}
               ></textarea>
             </div>
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               disabled={status === 'submitting'}
-              className="w-full group relative overflow-hidden rounded-lg bg-pink-600/10 border border-pink-500/50 px-8 py-4 text-center transition-all hover:bg-pink-600/20 hover:border-pink-400"
+              className="w-full group relative overflow-hidden rounded-lg px-8 py-4 text-center transition-all border"
+              style={{
+                backgroundColor: `rgba(${theme.colors.secondaryRgb}, 0.1)`,
+                borderColor: `rgba(${theme.colors.secondaryRgb}, 0.5)`,
+                color: theme.colors.secondary
+              }}
             >
-               <span className="relative z-10 flex items-center justify-center gap-2 font-orbitron text-pink-400 group-hover:text-pink-300 uppercase tracking-widest text-sm">
-                  {status === 'submitting' ? 'Transmitting...' : 'Initialize Upload'}
+               <span
+                 className="relative z-10 flex items-center justify-center gap-2 uppercase tracking-widest text-sm"
+                 style={{ fontFamily: theme.fonts.heading }}
+               >
+                  {status === 'submitting'
+                    ? (theme.isDark ? 'Transmitting...' : 'Sending...')
+                    : (theme.isDark ? 'Initialize Upload' : 'Send Message')}
                   {!status.includes('submitting') && (
                     <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
                   )}
                </span>
-               <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-pink-500/10 to-transparent group-hover:animate-shimmer"></div>
+               <div
+                 className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent to-transparent group-hover:animate-shimmer"
+                 style={{ background: `linear-gradient(to right, transparent, rgba(${theme.colors.secondaryRgb}, 0.1), transparent)` }}
+               ></div>
             </button>
             {status === 'error' && (
-              <p className="text-center text-red-400 text-xs mt-2">Transmission Failed. Please check your config.</p>
+              <p className="text-center text-red-400 text-xs mt-2">
+                {theme.isDark ? 'Transmission Failed. Please check your config.' : 'Failed to send. Please try again.'}
+              </p>
             )}
           </form>
         )}
