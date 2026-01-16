@@ -1,33 +1,47 @@
-
-import React, { useState } from 'react';
-import { ThemeProvider, useTheme } from './themes/ThemeContext';
-import { SynthwaveBackground } from './components/SynthwaveBackground';
-import { SchwälmerBackground } from './components/SchwälmerBackground';
-import { Profile } from './components/Profile';
-import { LinkCard } from './components/LinkCard';
-import { SocialIcons } from './components/SocialIcons';
-import { AIChat } from './components/AIChat';
-import { BlogFeed } from './components/BlogFeed';
-import { SocialFeed } from './components/SocialFeed';
-import { ContactForm } from './components/ContactForm';
-import { PRIMARY_LINKS, SOCIAL_LINKS } from './constants';
+import React, { useState } from "react";
+import { ThemeProvider, useTheme } from "./themes/ThemeContext";
+import { SynthwaveBackground } from "./components/SynthwaveBackground";
+import { SchwälmerBackground } from "./components/SchwälmerBackground";
+import { Profile } from "./components/Profile";
+import { LinkCard } from "./components/LinkCard";
+import { SocialIcons } from "./components/SocialIcons";
+import { AIChat } from "./components/AIChat";
+import { BlogFeed } from "./components/BlogFeed";
+import { SocialFeed } from "./components/SocialFeed";
+import { ContactForm } from "./components/ContactForm";
+import { PRIMARY_LINKS, SOCIAL_LINKS } from "./constants";
 
 const AppContent: React.FC = () => {
   const [showChat, setShowChat] = useState(false);
   const theme = useTheme();
 
   const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   // Dynamic styles based on theme
   const primaryButtonClass = theme.isDark
-    ? 'bg-black/70 text-cyan-400 border-cyan-500/50 hover:border-cyan-400 shadow-[0_0_15px_rgba(0,255,255,0.1)] hover:shadow-[0_0_25px_rgba(0,255,255,0.3)]'
-    : 'bg-white/80 border-2 hover:bg-white shadow-lg hover:shadow-xl';
+    ? "bg-black/70 text-cyan-400 border-cyan-500/50 hover:border-cyan-400 shadow-[0_0_15px_rgba(0,255,255,0.1)] hover:shadow-[0_0_25px_rgba(0,255,255,0.3)]"
+    : "text-white transition-all";
+
+  const primaryButtonStyle = theme.isDark
+    ? {}
+    : {
+        backgroundColor: theme.colors.primary,
+        boxShadow: theme.shadows.button,
+        // Lift effect handled by CSS or generic class, but we can inline for specific color control if needed
+      };
 
   const secondaryButtonClass = theme.isDark
-    ? 'bg-black/70 text-pink-400 border-pink-500/50 hover:border-pink-400 shadow-[0_0_15px_rgba(236,72,153,0.1)] hover:shadow-[0_0_25px_rgba(236,72,153,0.3)]'
-    : 'bg-white/80 border-2 hover:bg-white shadow-lg hover:shadow-xl';
+    ? "bg-black/70 text-pink-400 border-pink-500/50 hover:border-pink-400 shadow-[0_0_15px_rgba(236,72,153,0.1)] hover:shadow-[0_0_25px_rgba(236,72,153,0.3)]"
+    : "bg-white hover:bg-slate-50 border-2 transition-all";
+
+  const secondaryButtonStyle = theme.isDark
+    ? {}
+    : {
+        color: theme.colors.textSecondary,
+        borderColor: theme.colors.border,
+      };
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-start py-12 px-4 overflow-hidden">
@@ -45,10 +59,15 @@ const AppContent: React.FC = () => {
         {/* Primary Website Links - Prominent Cards */}
         <div className="w-full space-y-6">
           <h2
-            className="text-center text-[10px] tracking-[0.4em] uppercase"
+            className="text-center uppercase"
             style={{
               fontFamily: theme.fonts.heading,
-              color: theme.colors.textMuted
+              color: theme.isDark
+                ? theme.colors.textMuted
+                : theme.colors.primary,
+              fontSize: theme.isDark ? "10px" : "12px",
+              letterSpacing: theme.isDark ? "0.4em" : "0.1em",
+              fontWeight: theme.isDark ? "normal" : "600",
             }}
           >
             Core Ventures
@@ -63,10 +82,15 @@ const AppContent: React.FC = () => {
         {/* Social Links - Just Icons */}
         <div className="w-full">
           <h2
-            className="text-center text-[10px] tracking-[0.4em] uppercase mb-6"
+            className="text-center uppercase mb-6"
             style={{
               fontFamily: theme.fonts.heading,
-              color: theme.colors.textMuted
+              color: theme.isDark
+                ? theme.colors.textMuted
+                : theme.colors.primary,
+              fontSize: theme.isDark ? "10px" : "12px",
+              letterSpacing: theme.isDark ? "0.4em" : "0.1em",
+              fontWeight: theme.isDark ? "normal" : "600",
             }}
           >
             Connect
@@ -79,33 +103,55 @@ const AppContent: React.FC = () => {
           <button
             onClick={() => setShowChat(!showChat)}
             className={`flex-1 group relative px-6 py-4 rounded-xl transition-all duration-300 ${primaryButtonClass}`}
-            style={{
-              fontFamily: theme.fonts.heading,
-              color: theme.colors.primary,
-              borderColor: theme.colors.primary
-            }}
+            style={
+              theme.isDark
+                ? {
+                    fontFamily: theme.fonts.heading,
+                    color: theme.colors.primary,
+                    borderColor: theme.colors.primary,
+                  }
+                : primaryButtonStyle
+            }
           >
             <span className="relative z-10 flex items-center justify-center gap-2">
               <span
                 className="w-2 h-2 rounded-full animate-pulse"
-                style={{ backgroundColor: theme.colors.primary }}
+                style={{
+                  backgroundColor: theme.isDark
+                    ? theme.colors.primary
+                    : "white",
+                }}
               />
-              {showChat ? 'Close Terminal' : 'AI Assistant'}
+              {showChat ? "Close Terminal" : "AI Assistant"}
             </span>
           </button>
 
           <button
             onClick={scrollToContact}
             className={`flex-1 group relative px-6 py-4 rounded-xl transition-all duration-300 ${secondaryButtonClass}`}
-            style={{
-              fontFamily: theme.fonts.heading,
-              color: theme.colors.secondary,
-              borderColor: theme.colors.secondary
-            }}
+            style={
+              theme.isDark
+                ? {
+                    fontFamily: theme.fonts.heading,
+                    color: theme.colors.secondary,
+                    borderColor: theme.colors.secondary,
+                  }
+                : secondaryButtonStyle
+            }
           >
             <span className="relative z-10 flex items-center justify-center gap-2">
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
               </svg>
               Contact Me
             </span>

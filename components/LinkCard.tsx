@@ -1,7 +1,6 @@
-
-import React from 'react';
-import { LinkItem } from '../types';
-import { useTheme } from '../themes/ThemeContext';
+import React from "react";
+import { LinkItem } from "../types";
+import { useTheme } from "../themes/ThemeContext";
 
 interface LinkCardProps {
   link: LinkItem;
@@ -10,14 +9,18 @@ interface LinkCardProps {
 
 export const LinkCard: React.FC<LinkCardProps> = ({ link, isProminent }) => {
   const theme = useTheme();
-  const isPrimary = link.color === 'cyan';
+  const isPrimary = link.color === "cyan";
   const accentColor = isPrimary ? theme.colors.primary : theme.colors.secondary;
-  const accentRgb = isPrimary ? theme.colors.primaryRgb : theme.colors.secondaryRgb;
+  const accentRgb = isPrimary
+    ? theme.colors.primaryRgb
+    : theme.colors.secondaryRgb;
 
-  const cardBg = theme.isDark ? 'glass' : 'bg-white';
+  const cardBg = theme.isDark ? "glass" : "bg-white";
   const hoverClass = theme.isDark
-    ? (isPrimary ? 'hover:neon-border-cyan' : 'hover:neon-border-pink')
-    : '';
+    ? isPrimary
+      ? "hover:neon-border-cyan"
+      : "hover:neon-border-pink"
+    : "";
 
   return (
     <a
@@ -25,94 +28,115 @@ export const LinkCard: React.FC<LinkCardProps> = ({ link, isProminent }) => {
       target="_blank"
       rel="noopener noreferrer"
       className={`
-        group relative block w-full transform hover:-translate-y-1
-        ${isProminent ? 'p-6 md:p-8' : 'p-5'}
+        group relative block w-full transform hover:-translate-y-0.5
+        ${isProminent ? "p-6 md:p-8" : "p-5"}
         ${cardBg} hover:z-50
       `}
       style={{
         borderRadius: theme.borderRadius.lg,
-        border: `1px solid rgba(${accentRgb}, ${theme.isDark ? 0.1 : 0.2})`,
+        border: theme.isDark ? `1px solid rgba(${accentRgb}, 0.1)` : "none",
         boxShadow: theme.shadows.card,
         transition: theme.transitions.slow,
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.boxShadow = theme.shadows.cardHover;
-        e.currentTarget.style.borderColor = `rgba(${accentRgb}, ${theme.isDark ? 0.5 : 0.4})`;
+        if (theme.isDark) {
+          e.currentTarget.style.borderColor = `rgba(${accentRgb}, 0.5)`;
+        }
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.boxShadow = theme.shadows.card;
-        e.currentTarget.style.borderColor = `rgba(${accentRgb}, ${theme.isDark ? 0.1 : 0.2})`;
+        if (theme.isDark) {
+          e.currentTarget.style.borderColor = `rgba(${accentRgb}, 0.1)`;
+        }
       }}
     >
       {/* --- POP-UP PREVIEW (Prominent Only) --- */}
       {isProminent && (
         <div className="hidden md:block absolute bottom-[120%] left-1/2 -translate-x-1/2 w-72 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 z-50">
-           {/* Monitor Frame */}
-           <div
-             className="relative p-1 rounded-lg"
-             style={{
-               backgroundColor: theme.isDark ? '#050505' : 'white',
-               border: theme.isDark ? `1px solid ${accentColor}` : `1px solid ${theme.colors.border}`,
-               boxShadow: theme.isDark ? `0 0 20px rgba(${accentRgb}, 0.3)` : theme.shadows.cardHover
-             }}
-           >
-              {/* Screen Content */}
+          {/* Monitor Frame */}
+          <div
+            className="relative p-1 rounded-lg"
+            style={{
+              backgroundColor: theme.isDark ? "#050505" : "white",
+              border: theme.isDark
+                ? `1px solid ${accentColor}`
+                : `1px solid ${theme.colors.border}`,
+              boxShadow: theme.isDark
+                ? `0 0 20px rgba(${accentRgb}, 0.3)`
+                : theme.shadows.cardHover,
+            }}
+          >
+            {/* Screen Content */}
+            <div
+              className="relative rounded overflow-hidden aspect-video"
+              style={{
+                backgroundColor: theme.isDark ? "#18181b" : "#f5f5f5",
+                border: theme.isDark
+                  ? "1px solid rgba(255,255,255,0.1)"
+                  : `1px solid ${theme.colors.border}`,
+              }}
+            >
+              {/* Loading/Static Placeholder underneath */}
               <div
-                className="relative rounded overflow-hidden aspect-video"
+                className="absolute inset-0 flex items-center justify-center text-xs"
                 style={{
-                  backgroundColor: theme.isDark ? '#18181b' : '#f5f5f5',
-                  border: theme.isDark ? '1px solid rgba(255,255,255,0.1)' : `1px solid ${theme.colors.border}`
+                  fontFamily: theme.fonts.heading,
+                  color: theme.colors.textMuted,
                 }}
               >
-                 {/* Loading/Static Placeholder underneath */}
-                 <div
-                   className="absolute inset-0 flex items-center justify-center text-xs"
-                   style={{ fontFamily: theme.fonts.heading, color: theme.colors.textMuted }}
-                 >
-                   {theme.isDark ? 'INITIALIZING...' : 'Loading...'}
-                 </div>
-
-                 {/* Live Preview */}
-                 <img
-                   src={`https://image.thum.io/get/width/600/crop/800/noanimate/${link.url}`}
-                   alt="Site Preview"
-                   className="relative z-10 w-full h-full object-cover opacity-90"
-                 />
-
-                 {/* Scanlines Overlay - only for dark theme */}
-                 {theme.isDark && (
-                   <div className="absolute inset-0 z-20 bg-[linear-gradient(rgba(18,16,20,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,6px_100%] opacity-40 pointer-events-none"></div>
-                 )}
-
-                 {/* Screen Glare */}
-                 <div className="absolute inset-0 z-30 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none"></div>
+                {theme.isDark ? "INITIALIZING..." : "Loading..."}
               </div>
 
-              {/* Monitor Status Bar - only for dark theme */}
+              {/* Live Preview */}
+              <img
+                src={`https://image.thum.io/get/width/600/crop/800/noanimate/${link.url}`}
+                alt="Site Preview"
+                className="relative z-10 w-full h-full object-cover opacity-90"
+              />
+
+              {/* Scanlines Overlay - only for dark theme */}
               {theme.isDark && (
-                <div className="flex justify-between items-center mt-1.5 px-1">
-                   <span
-                     className="text-[9px] tracking-widest"
-                     style={{ fontFamily: theme.fonts.heading, color: accentColor }}
-                   >
-                      LIVE FEED :: 128kbps
-                   </span>
-                   <div className="flex gap-1">
-                      <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: accentColor }}></div>
-                      <div className="w-1.5 h-1.5 rounded-full bg-zinc-800"></div>
-                   </div>
-                </div>
+                <div className="absolute inset-0 z-20 bg-[linear-gradient(rgba(18,16,20,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,6px_100%] opacity-40 pointer-events-none"></div>
               )}
 
-              {/* Connecting Line/Triangle */}
-              <div
-                className="absolute left-1/2 -translate-x-1/2 -bottom-2.5 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px]"
-                style={{
-                  borderTopColor: theme.isDark ? accentColor : theme.colors.border,
-                  filter: 'drop-shadow(0 4px 4px rgba(0,0,0,0.2))'
-                }}
-              ></div>
-           </div>
+              {/* Screen Glare */}
+              <div className="absolute inset-0 z-30 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none"></div>
+            </div>
+
+            {/* Monitor Status Bar - only for dark theme */}
+            {theme.isDark && (
+              <div className="flex justify-between items-center mt-1.5 px-1">
+                <span
+                  className="text-[9px] tracking-widest"
+                  style={{
+                    fontFamily: theme.fonts.heading,
+                    color: accentColor,
+                  }}
+                >
+                  LIVE FEED :: 128kbps
+                </span>
+                <div className="flex gap-1">
+                  <div
+                    className="w-1.5 h-1.5 rounded-full animate-pulse"
+                    style={{ backgroundColor: accentColor }}
+                  ></div>
+                  <div className="w-1.5 h-1.5 rounded-full bg-zinc-800"></div>
+                </div>
+              </div>
+            )}
+
+            {/* Connecting Line/Triangle */}
+            <div
+              className="absolute left-1/2 -translate-x-1/2 -bottom-2.5 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px]"
+              style={{
+                borderTopColor: theme.isDark
+                  ? accentColor
+                  : theme.colors.border,
+                filter: "drop-shadow(0 4px 4px rgba(0,0,0,0.2))",
+              }}
+            ></div>
+          </div>
         </div>
       )}
 
@@ -124,7 +148,9 @@ export const LinkCard: React.FC<LinkCardProps> = ({ link, isProminent }) => {
               className="flex items-center justify-center w-12 h-12 backdrop-blur-sm overflow-hidden"
               style={{
                 borderRadius: theme.borderRadius.md,
-                backgroundColor: theme.isDark ? 'rgba(24, 24, 27, 0.8)' : 'rgba(255, 255, 255, 0.8)',
+                backgroundColor: theme.isDark
+                  ? "rgba(24, 24, 27, 0.8)"
+                  : "rgba(255, 255, 255, 0.8)",
                 border: `1px solid rgba(${accentRgb}, 0.2)`,
                 transition: theme.transitions.default,
               }}
@@ -135,31 +161,44 @@ export const LinkCard: React.FC<LinkCardProps> = ({ link, isProminent }) => {
                 className="w-8 h-8 object-contain"
               />
             </div>
-          ) : link.icon && (
-            <div
-              className="p-3 backdrop-blur-sm"
-              style={{
-                borderRadius: theme.borderRadius.md,
-                backgroundColor: theme.isDark ? 'rgba(24, 24, 27, 0.8)' : 'rgba(255, 255, 255, 0.8)',
-                border: `1px solid rgba(${accentRgb}, 0.2)`,
-                color: accentColor,
-                transition: theme.transitions.default,
-              }}
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
+          ) : (
+            link.icon && (
+              <div
+                className="p-3 backdrop-blur-sm"
+                style={{
+                  borderRadius: theme.borderRadius.md,
+                  backgroundColor: theme.isDark
+                    ? "rgba(24, 24, 27, 0.8)"
+                    : "rgba(255, 255, 255, 0.8)",
+                  border: `1px solid rgba(${accentRgb}, 0.2)`,
+                  color: accentColor,
+                  transition: theme.transitions.default,
+                }}
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={link.icon} />
-              </svg>
-            </div>
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d={link.icon}
+                  />
+                </svg>
+              </div>
+            )
           )}
           <div className="flex flex-col">
             <span
-              className={`${isProminent ? 'text-xl md:text-2xl font-bold' : 'text-lg font-semibold'} tracking-tight`}
+              className={`${
+                isProminent
+                  ? "text-xl md:text-2xl font-bold"
+                  : "text-lg font-semibold"
+              } tracking-tight`}
               style={{
                 fontFamily: theme.fonts.heading,
                 color: theme.colors.text,
@@ -170,7 +209,10 @@ export const LinkCard: React.FC<LinkCardProps> = ({ link, isProminent }) => {
             </span>
             <span
               className="text-[10px] tracking-[0.2em] uppercase mt-1 font-medium"
-              style={{ color: theme.colors.textMuted, transition: theme.transitions.default }}
+              style={{
+                color: theme.colors.textMuted,
+                transition: theme.transitions.default,
+              }}
             >
               Official Website
             </span>
@@ -181,7 +223,9 @@ export const LinkCard: React.FC<LinkCardProps> = ({ link, isProminent }) => {
           className="p-2 backdrop-blur-xl"
           style={{
             borderRadius: theme.borderRadius.full,
-            backgroundColor: theme.isDark ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.8)',
+            backgroundColor: theme.isDark
+              ? "rgba(0, 0, 0, 0.2)"
+              : "rgba(255, 255, 255, 0.8)",
             border: `1px solid rgba(${accentRgb}, 0.1)`,
             color: theme.colors.textMuted,
             transition: theme.transitions.default,
@@ -194,7 +238,12 @@ export const LinkCard: React.FC<LinkCardProps> = ({ link, isProminent }) => {
             viewBox="0 0 24 24"
             stroke="currentColor"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M14 5l7 7m0 0l-7 7m7-7H3"
+            />
           </svg>
         </div>
       </div>
