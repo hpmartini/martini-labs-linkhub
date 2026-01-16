@@ -1,6 +1,6 @@
-
-import React from 'react';
-import { useTheme } from '../themes/ThemeContext';
+import React from "react";
+import { useTheme } from "../themes/ThemeContext";
+import { SchwalmUnderline } from "./SchwalmUnderline";
 
 interface ProfileProps {
   name: string;
@@ -10,12 +10,18 @@ interface ProfileProps {
   brand: string;
 }
 
-export const Profile: React.FC<ProfileProps> = ({ name, title1, title2, company, brand }) => {
+export const Profile: React.FC<ProfileProps> = ({
+  name,
+  title1,
+  title2,
+  company,
+  brand,
+}) => {
   const theme = useTheme();
 
   const scrollToContact = (e: React.MouseEvent) => {
     e.preventDefault();
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -27,22 +33,28 @@ export const Profile: React.FC<ProfileProps> = ({ name, title1, title2, company,
           <div
             className="absolute -inset-1 rounded-full blur-md opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"
             style={{
-              background: `linear-gradient(to right, ${theme.colors.primary}, ${theme.colors.secondary})`
+              background: `linear-gradient(to right, ${theme.colors.primary}, ${theme.colors.secondary})`,
             }}
           />
         )}
         <div
           className="relative w-32 h-32 rounded-full overflow-hidden"
           style={{
-            border: theme.isDark ? '2px solid rgba(255,255,255,0.3)' : '3px solid white',
-            backgroundColor: theme.isDark ? 'black' : 'white',
-            boxShadow: theme.isDark ? '0 25px 50px -12px rgba(0, 0, 0, 0.5)' : '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)'
+            border: theme.isDark
+              ? "2px solid rgba(255,255,255,0.3)"
+              : "3px solid white",
+            backgroundColor: theme.isDark ? "black" : "white",
+            boxShadow: theme.isDark
+              ? "0 25px 50px -12px rgba(0, 0, 0, 0.5)"
+              : "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)",
           }}
         >
           <img
-            src={theme.isDark ? 'images/hape.jpeg' : 'images/hape_schwalm.jpeg'}
+            src={theme.isDark ? "images/hape.jpeg" : "images/hape_schwalm.jpeg"}
             alt={name}
-            className={`w-full h-full object-cover ${theme.isDark ? 'grayscale-[0.2] contrast-125' : ''}`}
+            className={`w-full h-full object-cover ${
+              theme.isDark ? "grayscale-[0.2] contrast-125" : ""
+            }`}
           />
         </div>
 
@@ -52,17 +64,27 @@ export const Profile: React.FC<ProfileProps> = ({ name, title1, title2, company,
           onClick={scrollToContact}
           className="absolute -top-1 -right-1 flex items-center justify-center w-8 h-8 rounded-full transition-all duration-300 z-30 cursor-pointer transform hover:scale-110"
           style={{
-            backgroundColor: theme.isDark ? '#18181b' : 'white',
+            backgroundColor: theme.isDark ? "#18181b" : "white",
             color: theme.colors.secondary,
             border: `2px solid ${theme.colors.secondary}`,
             boxShadow: theme.isDark
               ? `0 0 10px rgba(${theme.colors.secondaryRgb}, 0.6)`
-              : '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+              : "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
           }}
           title="Send Message"
         >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            />
           </svg>
         </a>
       </div>
@@ -74,36 +96,59 @@ export const Profile: React.FC<ProfileProps> = ({ name, title1, title2, company,
           <div className="absolute inset-0 bg-black/60 blur-3xl rounded-full scale-150 pointer-events-none -z-10" />
         )}
 
-        <div className="space-y-2 relative z-10">
+        <div className="space-y-1 md:space-y-2 relative z-10 flex flex-col items-center">
           <h1
-            className="text-4xl md:text-5xl font-black uppercase tracking-tighter leading-none"
+            className={`text-4xl md:text-5xl tracking-tight leading-none ${
+              theme.isDark ? "font-black uppercase mb-1" : "font-extrabold mb-6"
+            }`}
             style={{
               fontFamily: theme.fonts.heading,
               color: theme.colors.text,
               textShadow: theme.isDark
                 ? `0 0 5px ${theme.colors.secondary}, 0 0 10px ${theme.colors.secondary}`
-                : 'none'
+                : "none",
             }}
           >
-            {name}
+            <span className="relative inline-block">
+              {name}
+              {/* Underline Component only visible in Light/Schwalm mode to mimic brand */}
+              {!theme.isDark && (
+                <SchwalmUnderline className="absolute -bottom-2 md:-bottom-3 left-0 w-full" />
+              )}
+            </span>
           </h1>
 
           <div className="flex flex-col items-center space-y-1">
             <span
-              className="font-semibold tracking-[0.2em] uppercase text-xs md:text-sm px-4 py-1 rounded-full"
+              className={
+                theme.isDark
+                  ? "font-semibold tracking-[0.1em] uppercase text-xs md:text-sm px-6 py-2 rounded-full mb-1"
+                  : "font-bold text-sm md:text-base px-6 py-2 rounded-full mb-2"
+              }
               style={{
-                color: theme.colors.primary,
-                backgroundColor: theme.isDark ? 'rgba(0,0,0,0.7)' : `rgba(${theme.colors.primaryRgb}, 0.1)`,
-                border: theme.isDark ? `1px solid rgba(${theme.colors.primaryRgb}, 0.1)` : 'none'
+                color: theme.isDark
+                  ? theme.colors.primary
+                  : theme.colors.accent,
+                backgroundColor: theme.isDark
+                  ? "rgba(0,0,0,0.7)"
+                  : theme.colors.accentBackground,
+                border: theme.isDark
+                  ? `1px solid rgba(${theme.colors.primaryRgb}, 0.1)`
+                  : `1px solid ${theme.colors.accentBorder}`,
               }}
             >
               {title1}
-              <br />
+              {theme.isDark && <br />}
+              {theme.isDark ? "" : " "}
               {title2}
             </span>
             <span
-              className="font-semibold text-lg md:text-xl"
-              style={{ color: theme.colors.textSecondary }}
+              className="font-bold text-lg md:text-xl"
+              style={{
+                color: theme.isDark
+                  ? theme.colors.textSecondary
+                  : theme.colors.text,
+              }}
             >
               {company}
               <br />
@@ -115,11 +160,13 @@ export const Profile: React.FC<ProfileProps> = ({ name, title1, title2, company,
 
       {/* Divider - subtle for light theme */}
       <div
-        className="w-16 h-0.5 mt-6 rounded-full"
+        className="w-16 h-0.5 mt-8 rounded-full"
         style={{
-          backgroundColor: theme.isDark ? 'transparent' : theme.colors.border,
-          background: theme.isDark ? `linear-gradient(to right, transparent, ${theme.colors.primary}, transparent)` : undefined,
-          opacity: theme.isDark ? 0.5 : 1
+          backgroundColor: theme.isDark ? "transparent" : theme.colors.border,
+          background: theme.isDark
+            ? `linear-gradient(to right, transparent, ${theme.colors.primary}, transparent)`
+            : undefined,
+          opacity: theme.isDark ? 0.5 : 1,
         }}
       />
     </div>

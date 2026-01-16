@@ -73,9 +73,23 @@ const AppContent: React.FC = () => {
             Core Ventures
           </h2>
           <div className="space-y-4">
-            {PRIMARY_LINKS.map((link) => (
-              <LinkCard key={link.url} link={link} isProminent={true} />
-            ))}
+            {PRIMARY_LINKS.map((link) => {
+              // Override icon for Schwälmer Softwarehaus in dark mode
+              const iconToUse =
+                theme.isDark && link.label.includes("Schwälmer")
+                  ? "images/schwalm_software_logo_alternate.png"
+                  : link.icon;
+
+              const linkWithThemeIcon = { ...link, icon: iconToUse };
+
+              return (
+                <LinkCard
+                  key={link.url}
+                  link={linkWithThemeIcon}
+                  isProminent={true}
+                />
+              );
+            })}
           </div>
         </div>
 
