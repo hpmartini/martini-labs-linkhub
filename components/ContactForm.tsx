@@ -60,15 +60,24 @@ export const ContactForm: React.FC = () => {
       </div>
 
       <div
-        className={`relative p-6 md:p-8 rounded-2xl ${cardBg} backdrop-blur-xl border transition-all duration-500 group`}
-        style={{ borderColor: `rgba(${theme.colors.secondaryRgb}, 0.1)` }}
+        className={`relative p-6 md:p-8 ${cardBg} backdrop-blur-xl group`}
+        style={{
+          borderRadius: theme.borderRadius.xl,
+          border: `1px solid rgba(${theme.colors.secondaryRgb}, 0.1)`,
+          boxShadow: theme.shadows.card,
+          transition: theme.transitions.slow,
+        }}
       >
 
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-2 h-2 border-t border-l" style={{ borderColor: theme.colors.secondary }}></div>
-        <div className="absolute top-0 right-0 w-2 h-2 border-t border-r" style={{ borderColor: theme.colors.secondary }}></div>
-        <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l" style={{ borderColor: theme.colors.secondary }}></div>
-        <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r" style={{ borderColor: theme.colors.secondary }}></div>
+        {/* Decorative elements - only for dark/synthwave theme */}
+        {theme.isDark && (
+          <>
+            <div className="absolute top-0 left-0 w-2 h-2 border-t border-l" style={{ borderColor: theme.colors.secondary }}></div>
+            <div className="absolute top-0 right-0 w-2 h-2 border-t border-r" style={{ borderColor: theme.colors.secondary }}></div>
+            <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l" style={{ borderColor: theme.colors.secondary }}></div>
+            <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r" style={{ borderColor: theme.colors.secondary }}></div>
+          </>
+        )}
 
         {status === 'success' ? (
            <div className="text-center py-12">
@@ -117,12 +126,14 @@ export const ContactForm: React.FC = () => {
                   id="name"
                   required
                   placeholder="John Doe"
-                  className={`w-full ${inputBg} border ${inputBorder} rounded-lg px-4 py-3 ${inputText} ${placeholderClass} focus:outline-none transition-all`}
+                  className={`w-full ${inputBg} px-4 py-3 ${inputText} ${placeholderClass} focus:outline-none`}
                   style={{
-                    borderColor: inputBorder,
+                    borderRadius: theme.borderRadius.md,
+                    border: `1px solid ${theme.colors.borderInput}`,
+                    transition: theme.transitions.default,
                   }}
                   onFocus={(e) => e.target.style.borderColor = `rgba(${theme.colors.secondaryRgb}, 0.5)`}
-                  onBlur={(e) => e.target.style.borderColor = ''}
+                  onBlur={(e) => e.target.style.borderColor = theme.colors.borderInput}
                 />
               </div>
               <div className="space-y-2">
@@ -139,9 +150,14 @@ export const ContactForm: React.FC = () => {
                   id="email"
                   required
                   placeholder="john@example.com"
-                  className={`w-full ${inputBg} border ${inputBorder} rounded-lg px-4 py-3 ${inputText} ${placeholderClass} focus:outline-none transition-all`}
+                  className={`w-full ${inputBg} px-4 py-3 ${inputText} ${placeholderClass} focus:outline-none`}
+                  style={{
+                    borderRadius: theme.borderRadius.md,
+                    border: `1px solid ${theme.colors.borderInput}`,
+                    transition: theme.transitions.default,
+                  }}
                   onFocus={(e) => e.target.style.borderColor = `rgba(${theme.colors.secondaryRgb}, 0.5)`}
-                  onBlur={(e) => e.target.style.borderColor = ''}
+                  onBlur={(e) => e.target.style.borderColor = theme.colors.borderInput}
                 />
               </div>
             </div>
@@ -160,20 +176,27 @@ export const ContactForm: React.FC = () => {
                 required
                 rows={4}
                 placeholder="Enter your message here..."
-                className={`w-full ${inputBg} border ${inputBorder} rounded-lg px-4 py-3 ${inputText} ${placeholderClass} focus:outline-none transition-all resize-none`}
+                className={`w-full ${inputBg} px-4 py-3 ${inputText} ${placeholderClass} focus:outline-none resize-none`}
+                style={{
+                  borderRadius: theme.borderRadius.md,
+                  border: `1px solid ${theme.colors.borderInput}`,
+                  transition: theme.transitions.default,
+                }}
                 onFocus={(e) => e.target.style.borderColor = `rgba(${theme.colors.secondaryRgb}, 0.5)`}
-                onBlur={(e) => e.target.style.borderColor = ''}
+                onBlur={(e) => e.target.style.borderColor = theme.colors.borderInput}
               ></textarea>
             </div>
 
             <button
               type="submit"
               disabled={status === 'submitting'}
-              className="w-full group relative overflow-hidden rounded-lg px-8 py-4 text-center transition-all border"
+              className="w-full group relative overflow-hidden px-8 py-4 text-center"
               style={{
+                borderRadius: theme.borderRadius.lg,
                 backgroundColor: `rgba(${theme.colors.secondaryRgb}, 0.1)`,
-                borderColor: `rgba(${theme.colors.secondaryRgb}, 0.5)`,
-                color: theme.colors.secondary
+                border: `1px solid rgba(${theme.colors.secondaryRgb}, 0.5)`,
+                color: theme.colors.secondary,
+                transition: theme.transitions.default,
               }}
             >
                <span

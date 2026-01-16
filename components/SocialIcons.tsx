@@ -1,16 +1,22 @@
 
 import React from 'react';
 import { LinkItem } from '../types';
+import { useTheme } from '../themes/ThemeContext';
 
 interface SocialIconsProps {
   links: LinkItem[];
 }
 
 export const SocialIcons: React.FC<SocialIconsProps> = ({ links }) => {
+  const theme = useTheme();
+
   return (
-    <div className="flex flex-wrap justify-center gap-6">
+    <div className="flex flex-wrap justify-center gap-4">
       {links.map((link) => {
-        const isCyan = link.color === 'cyan';
+        const isPrimary = link.color === 'cyan';
+        const accentColor = isPrimary ? theme.colors.primary : theme.colors.secondary;
+        const accentRgb = isPrimary ? theme.colors.primaryRgb : theme.colors.secondaryRgb;
+
         return (
           <a
             key={link.url}
@@ -18,25 +24,48 @@ export const SocialIcons: React.FC<SocialIconsProps> = ({ links }) => {
             target="_blank"
             rel="noopener noreferrer"
             title={link.label}
-            className={`
-              group relative p-4 rounded-full glass border transition-all duration-300 transform hover:-translate-y-1 hover:scale-110
-              ${isCyan ? 'border-cyan-500/20 hover:border-cyan-400 hover:neon-border-cyan' : 'border-pink-500/20 hover:border-pink-400 hover:neon-border-pink'}
-            `}
+            className="group relative p-3 transition-all duration-300 transform hover:-translate-y-1"
+            style={{
+              borderRadius: theme.borderRadius.full,
+              backgroundColor: theme.isDark ? 'rgba(0, 0, 0, 0.3)' : 'white',
+              border: `2px solid ${theme.isDark ? `rgba(${accentRgb}, 0.2)` : theme.colors.border}`,
+              boxShadow: theme.isDark ? 'none' : theme.shadows.card,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = accentColor;
+              e.currentTarget.style.boxShadow = theme.isDark
+                ? `0 0 15px rgba(${accentRgb}, 0.3)`
+                : theme.shadows.cardHover;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = theme.isDark ? `rgba(${accentRgb}, 0.2)` : theme.colors.border;
+              e.currentTarget.style.boxShadow = theme.isDark ? 'none' : theme.shadows.card;
+            }}
           >
-            <div className={`relative z-10 transition-colors duration-300 ${isCyan ? 'text-cyan-600 group-hover:text-cyan-400' : 'text-pink-600 group-hover:text-pink-400'}`}>
-              <svg 
-                className="w-6 h-6" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24" 
+            <div
+              className="relative z-10 transition-colors duration-300"
+              style={{ color: theme.isDark ? accentColor : theme.colors.textMuted }}
+              onMouseEnter={(e) => e.currentTarget.style.color = accentColor}
+              onMouseLeave={(e) => e.currentTarget.style.color = theme.isDark ? accentColor : theme.colors.textMuted}
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={link.icon} />
               </svg>
             </div>
-            
-            {/* Background Glow */}
-            <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-md ${isCyan ? 'bg-cyan-400' : 'bg-pink-400'}`}></div>
+
+            {/* Background Glow - only for dark theme */}
+            {theme.isDark && (
+              <div
+                className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-md"
+                style={{ backgroundColor: accentColor }}
+              ></div>
+            )}
           </a>
         );
       })}

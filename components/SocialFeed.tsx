@@ -45,8 +45,13 @@ export const SocialFeed: React.FC = () => {
               href={linkedInUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group relative flex items-center justify-between p-6 rounded-xl border ${cardBg} backdrop-blur-xl transition-all duration-300`}
-              style={{ borderColor: `rgba(${theme.colors.primaryRgb}, 0.3)` }}
+              className={`group relative flex items-center justify-between p-6 ${cardBg} backdrop-blur-xl`}
+              style={{
+                borderRadius: theme.borderRadius.lg,
+                border: `1px solid rgba(${theme.colors.primaryRgb}, 0.3)`,
+                boxShadow: theme.shadows.card,
+                transition: theme.transitions.slow,
+              }}
             >
                 <div className="flex flex-col">
                     <span
@@ -67,10 +72,12 @@ export const SocialFeed: React.FC = () => {
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                 </div>
                 <div
-                  className="absolute inset-0 rounded-xl transition-all duration-500 opacity-0 group-hover:opacity-100"
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100"
                   style={{
+                    borderRadius: theme.borderRadius.lg,
                     border: `1px solid rgba(${theme.colors.primaryRgb}, 0.5)`,
-                    boxShadow: `0 0 20px rgba(${theme.colors.primaryRgb}, 0.2)`
+                    boxShadow: `0 0 20px rgba(${theme.colors.primaryRgb}, 0.2)`,
+                    transition: theme.transitions.slow,
                   }}
                 ></div>
             </a>
@@ -80,8 +87,13 @@ export const SocialFeed: React.FC = () => {
               href={twitterUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group relative flex items-center justify-between p-6 rounded-xl border ${cardBg} backdrop-blur-xl transition-all duration-300`}
-              style={{ borderColor: `rgba(${theme.colors.secondaryRgb}, 0.3)` }}
+              className={`group relative flex items-center justify-between p-6 ${cardBg} backdrop-blur-xl`}
+              style={{
+                borderRadius: theme.borderRadius.lg,
+                border: `1px solid rgba(${theme.colors.secondaryRgb}, 0.3)`,
+                boxShadow: theme.shadows.card,
+                transition: theme.transitions.slow,
+              }}
             >
                 <div className="flex flex-col">
                     <span
@@ -102,10 +114,12 @@ export const SocialFeed: React.FC = () => {
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                 </div>
                 <div
-                  className="absolute inset-0 rounded-xl transition-all duration-500 opacity-0 group-hover:opacity-100"
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100"
                   style={{
+                    borderRadius: theme.borderRadius.lg,
                     border: `1px solid rgba(${theme.colors.secondaryRgb}, 0.5)`,
-                    boxShadow: `0 0 20px rgba(${theme.colors.secondaryRgb}, 0.2)`
+                    boxShadow: `0 0 20px rgba(${theme.colors.secondaryRgb}, 0.2)`,
+                    transition: theme.transitions.slow,
                   }}
                 ></div>
             </a>
@@ -167,14 +181,20 @@ export const SocialFeed: React.FC = () => {
                 href={post.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group relative flex flex-col p-5 rounded-xl border ${cardBg} backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden`}
-                style={{ borderColor: `rgba(${accentRgb}, 0.2)` }}
+                className={`group relative flex flex-col p-5 ${cardBg} backdrop-blur-xl hover:-translate-y-1 overflow-hidden`}
+                style={{
+                  borderRadius: theme.borderRadius.lg,
+                  border: `1px solid rgba(${accentRgb}, 0.2)`,
+                  boxShadow: theme.shadows.card,
+                  transition: theme.transitions.slow,
+                }}
               >
                 <div className="flex justify-between items-start mb-3">
                     <div className="flex items-center gap-2">
                         <span
-                          className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-sm"
+                          className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5"
                           style={{
+                            borderRadius: theme.borderRadius.sm,
                             backgroundColor: `rgba(${accentRgb}, ${theme.isDark ? 0.2 : 0.1})`,
                             color: accentColor
                           }}
@@ -201,8 +221,8 @@ export const SocialFeed: React.FC = () => {
                 </p>
 
                 <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-5 pointer-events-none transition-opacity duration-500"
-                  style={{ backgroundColor: accentColor }}
+                  className="absolute inset-0 opacity-0 group-hover:opacity-5 pointer-events-none"
+                  style={{ backgroundColor: accentColor, transition: theme.transitions.slow }}
                 ></div>
               </a>
             );

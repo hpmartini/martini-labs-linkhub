@@ -20,23 +20,27 @@ export const Profile: React.FC<ProfileProps> = ({ name, title1, title2, company,
 
   return (
     <div className="flex flex-col items-center text-center animate-fade-in w-full">
-      {/* Avatar with glow */}
+      {/* Avatar */}
       <div className="relative group mb-8">
+        {/* Glow effect - only for dark theme */}
+        {theme.isDark && (
+          <div
+            className="absolute -inset-1 rounded-full blur-md opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"
+            style={{
+              background: `linear-gradient(to right, ${theme.colors.primary}, ${theme.colors.secondary})`
+            }}
+          />
+        )}
         <div
-          className="absolute -inset-1 rounded-full blur-md opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"
+          className="relative w-32 h-32 rounded-full overflow-hidden"
           style={{
-            background: `linear-gradient(to right, ${theme.colors.primary}, ${theme.colors.secondary})`
-          }}
-        />
-        <div
-          className="relative w-32 h-32 rounded-full border-2 overflow-hidden shadow-2xl"
-          style={{
-            borderColor: theme.isDark ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.1)',
-            backgroundColor: theme.isDark ? 'black' : 'white'
+            border: theme.isDark ? '2px solid rgba(255,255,255,0.3)' : '3px solid white',
+            backgroundColor: theme.isDark ? 'black' : 'white',
+            boxShadow: theme.isDark ? '0 25px 50px -12px rgba(0, 0, 0, 0.5)' : '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)'
           }}
         >
           <img
-            src="images/hape.jpeg"
+            src={theme.isDark ? 'images/hape.jpeg' : 'images/hape_schwalm.jpeg'}
             alt={name}
             className={`w-full h-full object-cover ${theme.isDark ? 'grayscale-[0.2] contrast-125' : ''}`}
           />
@@ -50,8 +54,10 @@ export const Profile: React.FC<ProfileProps> = ({ name, title1, title2, company,
           style={{
             backgroundColor: theme.isDark ? '#18181b' : 'white',
             color: theme.colors.secondary,
-            border: `1px solid ${theme.colors.secondary}`,
-            boxShadow: `0 0 10px rgba(${theme.colors.secondaryRgb}, 0.6)`
+            border: `2px solid ${theme.colors.secondary}`,
+            boxShadow: theme.isDark
+              ? `0 0 10px rgba(${theme.colors.secondaryRgb}, 0.6)`
+              : '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
           }}
           title="Send Message"
         >
@@ -84,11 +90,11 @@ export const Profile: React.FC<ProfileProps> = ({ name, title1, title2, company,
 
           <div className="flex flex-col items-center space-y-1">
             <span
-              className="font-bold tracking-[0.3em] uppercase text-xs md:text-sm px-4 py-0.5 rounded-full"
+              className="font-semibold tracking-[0.2em] uppercase text-xs md:text-sm px-4 py-1 rounded-full"
               style={{
                 color: theme.colors.primary,
-                backgroundColor: theme.isDark ? 'rgba(0,0,0,0.7)' : 'rgba(255,255,255,0.9)',
-                border: `1px solid rgba(${theme.colors.primaryRgb}, 0.1)`
+                backgroundColor: theme.isDark ? 'rgba(0,0,0,0.7)' : `rgba(${theme.colors.primaryRgb}, 0.1)`,
+                border: theme.isDark ? `1px solid rgba(${theme.colors.primaryRgb}, 0.1)` : 'none'
               }}
             >
               {title1}
@@ -97,7 +103,7 @@ export const Profile: React.FC<ProfileProps> = ({ name, title1, title2, company,
             </span>
             <span
               className="font-semibold text-lg md:text-xl"
-              style={{ color: theme.isDark ? '#e4e4e7' : theme.colors.text }}
+              style={{ color: theme.colors.textSecondary }}
             >
               {company}
               <br />
@@ -107,10 +113,13 @@ export const Profile: React.FC<ProfileProps> = ({ name, title1, title2, company,
         </div>
       </div>
 
+      {/* Divider - subtle for light theme */}
       <div
-        className="w-24 h-1 mt-6 rounded-full opacity-50"
+        className="w-16 h-0.5 mt-6 rounded-full"
         style={{
-          background: `linear-gradient(to right, transparent, ${theme.colors.primary}, transparent)`
+          backgroundColor: theme.isDark ? 'transparent' : theme.colors.border,
+          background: theme.isDark ? `linear-gradient(to right, transparent, ${theme.colors.primary}, transparent)` : undefined,
+          opacity: theme.isDark ? 0.5 : 1
         }}
       />
     </div>

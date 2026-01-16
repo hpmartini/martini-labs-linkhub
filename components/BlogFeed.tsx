@@ -107,12 +107,21 @@ export const BlogFeed: React.FC = () => {
                 href={post.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group relative flex flex-col justify-between p-5 rounded-xl border ${cardBg} backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden`}
+                className={`group relative flex flex-col justify-between p-5 ${cardBg} backdrop-blur-xl hover:-translate-y-1 overflow-hidden`}
                 style={{
-                  borderColor: `rgba(${accentRgb}, 0.2)`,
+                  borderRadius: theme.borderRadius.lg,
+                  border: `1px solid rgba(${accentRgb}, 0.2)`,
+                  boxShadow: theme.shadows.card,
+                  transition: theme.transitions.slow,
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.borderColor = `rgba(${accentRgb}, 0.5)`}
-                onMouseLeave={(e) => e.currentTarget.style.borderColor = `rgba(${accentRgb}, 0.2)`}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = `rgba(${accentRgb}, 0.5)`;
+                  e.currentTarget.style.boxShadow = theme.shadows.cardHover;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = `rgba(${accentRgb}, 0.2)`;
+                  e.currentTarget.style.boxShadow = theme.shadows.card;
+                }}
               >
                 {/* Decoration Lines */}
                 <div className="absolute top-0 right-0 p-2 opacity-50 transition-opacity group-hover:opacity-100" style={{ color: accentColor }}>
@@ -124,8 +133,9 @@ export const BlogFeed: React.FC = () => {
                 <div>
                   <div className="flex items-center gap-2 mb-2">
                     <span
-                      className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-sm"
+                      className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5"
                       style={{
+                        borderRadius: theme.borderRadius.sm,
                         backgroundColor: `rgba(${accentRgb}, ${theme.isDark ? 0.2 : 0.1})`,
                         color: accentColor
                       }}
@@ -156,8 +166,8 @@ export const BlogFeed: React.FC = () => {
 
                 {/* Hover Glow */}
                 <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-10 pointer-events-none transition-opacity duration-500"
-                  style={{ backgroundColor: accentColor }}
+                  className="absolute inset-0 opacity-0 group-hover:opacity-10 pointer-events-none"
+                  style={{ backgroundColor: accentColor, transition: theme.transitions.slow }}
                 ></div>
               </a>
             );
