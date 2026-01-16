@@ -182,3 +182,4 @@ export const getTheme = (themeName?: string): Theme => {
   const name = themeName || import.meta.env.VITE_THEME || 'synthwave';
   return themes[name] || themes.synthwave;
 };
+// Build trigger: 1768569652
