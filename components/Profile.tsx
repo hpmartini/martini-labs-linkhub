@@ -27,7 +27,7 @@ export const Profile: React.FC<ProfileProps> = ({
   return (
     <div className="flex flex-col items-center text-center animate-fade-in w-full">
       {/* Avatar */}
-      <div className="relative group mb-8">
+      <div className="relative group mb-8 z-50">
         {/* Glow effect - only for dark theme */}
         {theme.isDark && (
           <div
@@ -38,7 +38,7 @@ export const Profile: React.FC<ProfileProps> = ({
           />
         )}
         <div
-          className="relative w-32 h-32 rounded-full overflow-hidden"
+          className="relative w-32 h-32 rounded-full transition-all duration-500 ease-out transform group-hover:scale-[3] group-hover:z-50 shadow-2xl"
           style={{
             border: theme.isDark
               ? "2px solid rgba(255,255,255,0.3)"
@@ -52,41 +52,73 @@ export const Profile: React.FC<ProfileProps> = ({
           <img
             src={theme.isDark ? "images/hape.jpeg" : "images/hape_schwalm.jpeg"}
             alt={name}
-            className={`w-full h-full object-cover ${
+            className={`w-full h-full object-cover rounded-full ${
               theme.isDark ? "grayscale-[0.2] contrast-125" : ""
             }`}
           />
+
+          {/* Hover Actions Overlay */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-sm rounded-full">
+            <button
+              onClick={scrollToContact}
+              className="px-3 py-1 text-[8px] font-bold text-white bg-blue-600 rounded-full hover:bg-blue-500 transition-colors shadow-lg transform hover:scale-105"
+            >
+              CONTACT ME
+            </button>
+            <a
+              href="/images/Hans-Peter Martini.vcf"
+              download
+              className="px-3 py-1 text-[8px] font-bold text-slate-800 bg-white rounded-full hover:bg-gray-100 transition-colors shadow-lg transform hover:scale-105 flex items-center gap-1"
+            >
+              <svg
+                className="w-2 h-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                />
+              </svg>
+              GET VCF
+            </a>
+          </div>
         </div>
 
-        {/* Message Badge / Contact Link */}
-        <a
-          href="#contact"
-          onClick={scrollToContact}
-          className="absolute -top-1 -right-1 flex items-center justify-center w-8 h-8 rounded-full transition-all duration-300 z-30 cursor-pointer transform hover:scale-110"
-          style={{
-            backgroundColor: theme.isDark ? "#18181b" : "white",
-            color: theme.colors.secondary,
-            border: `2px solid ${theme.colors.secondary}`,
-            boxShadow: theme.isDark
-              ? `0 0 10px rgba(${theme.colors.secondaryRgb}, 0.6)`
-              : "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-          }}
-          title="Send Message"
-        >
-          <svg
-            className="w-4 h-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+        {/* Message Badge / Contact Link - Hide when hovering for actions */}
+        <div className="group-hover:opacity-0 transition-opacity duration-200">
+          <a
+            href="#contact"
+            onClick={scrollToContact}
+            className="absolute -top-1 -right-1 flex items-center justify-center w-8 h-8 rounded-full transition-all duration-300 z-30 cursor-pointer transform hover:scale-110"
+            style={{
+              backgroundColor: theme.isDark ? "#18181b" : "white",
+              color: theme.colors.secondary,
+              border: `2px solid ${theme.colors.secondary}`,
+              boxShadow: theme.isDark
+                ? `0 0 10px rgba(${theme.colors.secondaryRgb}, 0.6)`
+                : "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+            }}
+            title="Send Message"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-            />
-          </svg>
-        </a>
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              />
+            </svg>
+          </a>
+        </div>
       </div>
 
       {/* Text block */}

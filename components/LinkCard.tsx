@@ -143,7 +143,7 @@ export const LinkCard: React.FC<LinkCardProps> = ({ link, isProminent }) => {
       <div className="relative z-30 flex items-center justify-between">
         <div className="flex items-center gap-4 md:gap-6">
           {/* Logo or fallback icon */}
-          {(link.logo || link.logoDark) ? (
+          {link.logo || link.logoDark ? (
             <div
               className="flex items-center justify-center w-12 h-12 backdrop-blur-sm overflow-hidden"
               style={{
@@ -156,7 +156,7 @@ export const LinkCard: React.FC<LinkCardProps> = ({ link, isProminent }) => {
               }}
             >
               <img
-                src={theme.isDark ? (link.logoDark || link.logo) : link.logo}
+                src={theme.isDark ? link.logoDark || link.logo : link.logo}
                 alt={`${link.label} logo`}
                 className="w-8 h-8 object-contain"
               />

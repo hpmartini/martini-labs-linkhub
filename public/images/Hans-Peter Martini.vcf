@@ -1,0 +1,20 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Apple Inc.//macOS 15.7.3//EN
+N:Martini;Hans-Peter;;;
+FN:Hans-Peter Martini
+EMAIL;type=INTERNET;type=WORK:hpm@martini-labs.de
+EMAIL;type=INTERNET;type=WORK:hpm@schwalm.it.de
+EMAIL;type=INTERNET;type=WORK:talk@hape.zone
+item1.TEL;type=pref:+49 173 5187251
+item1.X-ABLabel:Geschäftlich
+item2.TEL:0156 78312377
+item2.X-ABLabel:Satellite
+X-SOCIALPROFILE;type=twitter:http://twitter.com/hpm_dev
+X-SOCIALPROFILE;type=linkedin:http://www.linkedin.com/in/hans-peter-martini
+X-SOCIALPROFILE;type=Instagram:x-apple:hp_m
+item3.URL;type=pref:schwaelmer-softwarehaus.de
+item3.X-ABLabel:Schwalm
+URL;type=WORK:martini-labs.de
+BDAY:1981-09-10
+END:VCARD
