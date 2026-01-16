@@ -178,8 +178,11 @@ export const themes: Record<string, Theme> = {
   },
 };
 
+// Get theme name from build-time env var (set in vite.config.ts define)
+const THEME_NAME: string = import.meta.env.VITE_THEME;
+
 export const getTheme = (themeName?: string): Theme => {
-  const name = themeName || import.meta.env.VITE_THEME || 'synthwave';
+  const name = themeName || THEME_NAME || 'synthwave';
+  console.log('getTheme called, using theme:', name);
   return themes[name] || themes.synthwave;
 };
-// Build trigger: 1768569652
