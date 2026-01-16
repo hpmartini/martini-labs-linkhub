@@ -11,6 +11,7 @@ export interface LinkItem {
   url: string;
   type: LinkType;
   icon?: string;
+  logo?: string; // Path to logo image
   color?: string; // 'cyan' | 'pink'
 }
 

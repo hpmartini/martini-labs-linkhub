@@ -1,11 +1,36 @@
 
 import React from 'react';
-import { LinkItem } from '../types';
+import { LinkItem, LinkType } from '../types';
 import { useTheme } from '../themes/ThemeContext';
+import { Linkedin, Twitter, Instagram, CloudSun, AtSign } from 'lucide-react';
 
 interface SocialIconsProps {
   links: LinkItem[];
 }
+
+// Map link types/labels to Lucide icons
+const getIconForLink = (link: LinkItem) => {
+  const label = link.label.toLowerCase();
+
+  if (label.includes('linkedin') || link.type === LinkType.LINKEDIN) {
+    return Linkedin;
+  }
+  if (label.includes('twitter') || label.includes('x.com')) {
+    return Twitter;
+  }
+  if (label.includes('instagram')) {
+    return Instagram;
+  }
+  if (label.includes('bluesky')) {
+    return CloudSun; // BlueSky-like icon
+  }
+  if (label.includes('mastodon')) {
+    return AtSign; // Mastodon uses @ symbol
+  }
+
+  // Fallback to a generic icon
+  return AtSign;
+};
 
 export const SocialIcons: React.FC<SocialIconsProps> = ({ links }) => {
   const theme = useTheme();
@@ -16,6 +41,7 @@ export const SocialIcons: React.FC<SocialIconsProps> = ({ links }) => {
         const isPrimary = link.color === 'cyan';
         const accentColor = isPrimary ? theme.colors.primary : theme.colors.secondary;
         const accentRgb = isPrimary ? theme.colors.primaryRgb : theme.colors.secondaryRgb;
+        const IconComponent = getIconForLink(link);
 
         return (
           <a
@@ -48,15 +74,7 @@ export const SocialIcons: React.FC<SocialIconsProps> = ({ links }) => {
               onMouseEnter={(e) => e.currentTarget.style.color = accentColor}
               onMouseLeave={(e) => e.currentTarget.style.color = theme.isDark ? accentColor : theme.colors.textMuted}
             >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={link.icon} />
-              </svg>
+              <IconComponent className="w-5 h-5" strokeWidth={1.5} />
             </div>
 
             {/* Background Glow - only for dark theme */}

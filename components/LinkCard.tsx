@@ -118,7 +118,24 @@ export const LinkCard: React.FC<LinkCardProps> = ({ link, isProminent }) => {
 
       <div className="relative z-30 flex items-center justify-between">
         <div className="flex items-center gap-4 md:gap-6">
-          {link.icon && (
+          {/* Logo or fallback icon */}
+          {link.logo ? (
+            <div
+              className="flex items-center justify-center w-12 h-12 backdrop-blur-sm overflow-hidden"
+              style={{
+                borderRadius: theme.borderRadius.md,
+                backgroundColor: theme.isDark ? 'rgba(24, 24, 27, 0.8)' : 'rgba(255, 255, 255, 0.8)',
+                border: `1px solid rgba(${accentRgb}, 0.2)`,
+                transition: theme.transitions.default,
+              }}
+            >
+              <img
+                src={link.logo}
+                alt={`${link.label} logo`}
+                className="w-8 h-8 object-contain"
+              />
+            </div>
+          ) : link.icon && (
             <div
               className="p-3 backdrop-blur-sm"
               style={{
