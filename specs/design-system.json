@@ -1,0 +1,516 @@
+{
+  "designSystemName": "Schwälmer Softwarehaus",
+  "version": "1.0.0",
+  "extractedFrom": "https://www.schwaelmer-softwarehaus.de/",
+  "extractedDate": "2026-01-15",
+
+  "colorPalette": {
+    "primary": {
+      "teal": "#2F4F4F",
+      "tealRgb": "47, 79, 79",
+      "tealLight": "rgba(47, 79, 79, 0.1)",
+      "tealHover": "#1E293B"
+    },
+    "secondary": {
+      "burgundy": "#A63333",
+      "burgundyRgb": "166, 51, 51",
+      "burgundyLight": "rgba(166, 51, 51, 0.1)",
+      "burgundyHover": "#B91C1C",
+      "burgundyDark": "#9A3412"
+    },
+    "background": {
+      "page": "#FAFAF9",
+      "card": "#FFFFFF",
+      "cardHover": "#FFFFFF",
+      "dark": "#0F172A",
+      "muted": "#F1F5F9"
+    },
+    "text": {
+      "primary": "#0F172A",
+      "secondary": "#1E293B",
+      "body": "#1E293B",
+      "muted": "#475569",
+      "light": "#64748B",
+      "onDark": "#FFFFFF",
+      "onPrimary": "#FFFFFF"
+    },
+    "border": {
+      "default": "#E2E8F0",
+      "light": "#CBD5E1",
+      "input": "#CBD5E1",
+      "focus": "rgba(47, 79, 79, 0.5)"
+    },
+    "accent": {
+      "taglineBackground": "#FFEDD5",
+      "taglineBorder": "#FED7AA",
+      "taglineText": "#9A3412"
+    }
+  },
+
+  "typography": {
+    "fontFamily": {
+      "primary": "Inter, sans-serif",
+      "heading": "Inter, sans-serif",
+      "body": "Inter, sans-serif"
+    },
+    "hierarchy": {
+      "h1": {
+        "fontSize": "60px",
+        "fontWeight": "800",
+        "lineHeight": "60px",
+        "color": "#0F172A",
+        "marginBottom": "24px"
+      },
+      "h2": {
+        "fontSize": "36px",
+        "fontWeight": "700",
+        "lineHeight": "1.2",
+        "color": "#0F172A",
+        "marginBottom": "16px"
+      },
+      "h3": {
+        "fontSize": "20px",
+        "fontWeight": "700",
+        "lineHeight": "1.3",
+        "color": "#1E293B",
+        "marginBottom": "8px"
+      },
+      "h4": {
+        "fontSize": "12px",
+        "fontWeight": "600",
+        "letterSpacing": "0.05em",
+        "textTransform": "uppercase",
+        "color": "#64748B"
+      },
+      "body": {
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "1.6",
+        "color": "#1E293B"
+      },
+      "small": {
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "color": "#64748B"
+      },
+      "caption": {
+        "fontSize": "12px",
+        "fontWeight": "500",
+        "letterSpacing": "0.1em",
+        "textTransform": "uppercase",
+        "color": "#64748B"
+      }
+    },
+    "highlightedText": {
+      "color": "#A63333",
+      "textDecoration": "underline",
+      "textDecorationColor": "#A63333"
+    }
+  },
+
+  "spacing": {
+    "xs": "4px",
+    "sm": "8px",
+    "md": "16px",
+    "lg": "24px",
+    "xl": "32px",
+    "2xl": "48px",
+    "3xl": "64px",
+    "4xl": "80px",
+    "5xl": "96px",
+    "sectionPadding": "80px 0",
+    "containerMaxWidth": "1280px"
+  },
+
+  "borderRadius": {
+    "none": "0px",
+    "sm": "4px",
+    "md": "8px",
+    "lg": "12px",
+    "xl": "16px",
+    "full": "9999px"
+  },
+
+  "shadows": {
+    "none": "none",
+    "sm": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+    "md": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)",
+    "lg": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)",
+    "primaryButton": "0 10px 15px -3px rgba(47, 79, 79, 0.2), 0 4px 6px -4px rgba(47, 79, 79, 0.2)",
+    "card": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)"
+  },
+
+  "elementStyling": {
+    "buttons": {
+      "primary": {
+        "background": "#2F4F4F",
+        "color": "#FFFFFF",
+        "border": "none",
+        "borderRadius": "12px",
+        "padding": "16px 32px",
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "boxShadow": "0 10px 15px -3px rgba(47, 79, 79, 0.2), 0 4px 6px -4px rgba(47, 79, 79, 0.2)",
+        "hover": {
+          "background": "#1E293B",
+          "transform": "translateY(-4px)",
+          "boxShadow": "0 10px 15px -3px rgba(47, 79, 79, 0.2), 0 4px 6px -4px rgba(47, 79, 79, 0.2)"
+        },
+        "transition": "all 0.15s cubic-bezier(0.4, 0, 0.2, 1)"
+      },
+      "secondary": {
+        "background": "#FFFFFF",
+        "color": "#334155",
+        "border": "2px solid #E2E8F0",
+        "borderRadius": "12px",
+        "padding": "16px 32px",
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "hover": {
+          "borderColor": "#CBD5E1",
+          "background": "#F8FAFC"
+        },
+        "transition": "all 0.15s cubic-bezier(0.4, 0, 0.2, 1)"
+      },
+      "pill": {
+        "background": "#FFFFFF",
+        "color": "#334155",
+        "border": "2px solid #E2E8F0",
+        "borderRadius": "9999px",
+        "padding": "10px 24px",
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "hover": {
+          "borderColor": "#2F4F4F",
+          "color": "#2F4F4F"
+        }
+      },
+      "navContact": {
+        "background": "#2F4F4F",
+        "color": "#FFFFFF",
+        "borderRadius": "8px",
+        "padding": "8px 20px",
+        "fontSize": "16px",
+        "fontWeight": "600"
+      },
+      "submit": {
+        "background": "#A63333",
+        "color": "#FFFFFF",
+        "borderRadius": "12px",
+        "padding": "16px 32px",
+        "fontWeight": "600",
+        "hover": {
+          "background": "#B91C1C"
+        }
+      }
+    },
+
+    "cards": {
+      "default": {
+        "background": "#FFFFFF",
+        "border": "none",
+        "borderRadius": "12px",
+        "boxShadow": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)",
+        "padding": "24px",
+        "hover": {
+          "boxShadow": "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)",
+          "transform": "translateY(-2px)"
+        },
+        "transition": "box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+      },
+      "blogCard": {
+        "background": "#FFFFFF",
+        "borderRadius": "12px",
+        "boxShadow": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)",
+        "overflow": "hidden"
+      },
+      "serviceCard": {
+        "background": "#FFFFFF",
+        "borderRadius": "12px",
+        "boxShadow": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)",
+        "categoryLabel": {
+          "color": "#64748B",
+          "fontSize": "12px",
+          "fontWeight": "600",
+          "letterSpacing": "0.05em",
+          "textTransform": "uppercase",
+          "marginBottom": "8px"
+        }
+      }
+    },
+
+    "badges": {
+      "tagline": {
+        "background": "#FFEDD5",
+        "color": "#9A3412",
+        "border": "1px solid #FED7AA",
+        "borderRadius": "9999px",
+        "padding": "6px 16px",
+        "fontSize": "14px",
+        "fontWeight": "600"
+      },
+      "sectionLabel": {
+        "color": "#2F4F4F",
+        "fontSize": "12px",
+        "fontWeight": "600",
+        "letterSpacing": "0.1em",
+        "textTransform": "uppercase"
+      },
+      "industryPill": {
+        "background": "#FFFFFF",
+        "color": "#334155",
+        "border": "2px solid #E2E8F0",
+        "borderRadius": "9999px",
+        "padding": "10px 24px",
+        "fontWeight": "600",
+        "activeBackground": "rgba(47, 79, 79, 0.1)",
+        "activeColor": "#2F4F4F",
+        "activeBorder": "transparent"
+      }
+    },
+
+    "navigation": {
+      "background": "transparent",
+      "padding": "24px 0",
+      "link": {
+        "color": "#475569",
+        "fontSize": "16px",
+        "fontWeight": "500",
+        "hover": {
+          "color": "#1E293B"
+        },
+        "transition": "color 0.15s cubic-bezier(0.4, 0, 0.2, 1)"
+      }
+    },
+
+    "forms": {
+      "input": {
+        "background": "#FFFFFF",
+        "border": "1px solid #CBD5E1",
+        "borderRadius": "8px",
+        "padding": "12px 16px",
+        "fontSize": "16px",
+        "color": "#1E293B",
+        "focus": {
+          "borderColor": "rgba(47, 79, 79, 0.5)",
+          "outline": "none",
+          "ring": "2px solid rgba(47, 79, 79, 0.2)"
+        }
+      },
+      "textarea": {
+        "background": "#FFFFFF",
+        "border": "1px solid #CBD5E1",
+        "borderRadius": "8px",
+        "padding": "12px 16px",
+        "minHeight": "120px"
+      },
+      "label": {
+        "color": "#334155",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "marginBottom": "6px"
+      },
+      "required": {
+        "color": "#EF4444"
+      }
+    },
+
+    "links": {
+      "default": {
+        "color": "#A63333",
+        "fontWeight": "600",
+        "textDecoration": "none",
+        "hover": {
+          "color": "#B91C1C",
+          "textDecoration": "underline"
+        }
+      },
+      "readMore": {
+        "color": "#A63333",
+        "fontWeight": "600",
+        "display": "inline-flex",
+        "alignItems": "center",
+        "gap": "4px",
+        "hover": {
+          "color": "#B91C1C"
+        }
+      },
+      "footer": {
+        "color": "#64748B",
+        "hover": {
+          "color": "#1E293B"
+        }
+      }
+    },
+
+    "icons": {
+      "checkmark": {
+        "color": "#2F4F4F",
+        "size": "20px"
+      },
+      "arrow": {
+        "color": "currentColor",
+        "size": "16px"
+      },
+      "industryIcons": {
+        "color": "#475569",
+        "size": "24px"
+      }
+    },
+
+    "sections": {
+      "light": {
+        "background": "#FAFAF9",
+        "padding": "80px 0"
+      },
+      "white": {
+        "background": "#FFFFFF",
+        "padding": "80px 0"
+      },
+      "dark": {
+        "background": "#0F172A",
+        "color": "#FFFFFF",
+        "padding": "80px 0"
+      },
+      "muted": {
+        "background": "#F1F5F9",
+        "padding": "80px 0"
+      }
+    },
+
+    "eoadMethod": {
+      "letterCircle": {
+        "background": "rgba(47, 79, 79, 0.1)",
+        "color": "#2F4F4F",
+        "width": "48px",
+        "height": "48px",
+        "borderRadius": "50%",
+        "fontSize": "20px",
+        "fontWeight": "700",
+        "display": "flex",
+        "alignItems": "center",
+        "justifyContent": "center"
+      }
+    },
+
+    "footer": {
+      "background": "transparent",
+      "borderTop": "1px solid #E2E8F0",
+      "padding": "24px 0",
+      "text": {
+        "color": "#64748B",
+        "fontSize": "14px"
+      }
+    }
+  },
+
+  "animations": {
+    "transitions": {
+      "default": "all 0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+      "slow": "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+      "fast": "all 0.1s cubic-bezier(0.4, 0, 0.2, 1)"
+    },
+    "hoverEffects": {
+      "buttonLift": {
+        "transform": "translateY(-4px)",
+        "description": "Primary buttons lift up on hover"
+      },
+      "cardLift": {
+        "transform": "translateY(-2px)",
+        "boxShadow": "increased",
+        "description": "Cards lift slightly with enhanced shadow on hover"
+      },
+      "linkColorChange": {
+        "description": "Links transition color smoothly on hover"
+      }
+    },
+    "scrollAnimations": {
+      "fadeInUp": {
+        "initial": {
+          "opacity": "0",
+          "transform": "translateY(20px)"
+        },
+        "animate": {
+          "opacity": "1",
+          "transform": "translateY(0)"
+        },
+        "duration": "0.6s",
+        "description": "Elements fade in and slide up when entering viewport"
+      }
+    },
+    "timingFunction": "cubic-bezier(0.4, 0, 0.2, 1)"
+  },
+
+  "doNotRules": [
+    "DO NOT apply card shadow to text elements",
+    "DO NOT use teal (#2F4F4F) for body text - it's only for buttons and accents",
+    "DO NOT use burgundy (#A63333) for backgrounds - it's only for text highlights and links",
+    "DO NOT apply button padding to inline links",
+    "DO NOT use full border-radius (9999px) on cards - only on badges and pills",
+    "DO NOT apply dark section background (#0F172A) to cards",
+    "DO NOT use tagline badge styles for regular text",
+    "DO NOT apply hover transform to text elements",
+    "DO NOT use uppercase text-transform for body copy",
+    "DO NOT apply letter-spacing to paragraph text",
+    "DO NOT use the tagline orange (#FFEDD5) as a primary color - it's only for badges",
+    "DO NOT mix font weights randomly - follow the typography hierarchy strictly",
+    "DO NOT apply card shadows to buttons - buttons have their own shadow definition",
+    "DO NOT use border-radius on sections - only on cards, buttons, and inputs"
+  ],
+
+  "applicationContext": {
+    "tealColor": {
+      "useFor": ["Primary buttons", "CTA buttons", "Section labels", "Check icons", "Active pill indicators", "EOAD method circles"],
+      "doNotUseFor": ["Body text", "Headlines", "Card backgrounds", "Borders"]
+    },
+    "burgundyColor": {
+      "useFor": ["Highlighted text in headlines", "Read more links", "Submit buttons (contact form)", "Link hover states"],
+      "doNotUseFor": ["Backgrounds", "Card shadows", "Borders", "Body text"]
+    },
+    "shadows": {
+      "cardShadow": ["Cards", "Blog cards", "Service cards"],
+      "buttonShadow": ["Primary CTA buttons only"],
+      "noShadow": ["Text", "Icons", "Badges", "Navigation"]
+    },
+    "borderRadius": {
+      "12px": ["Cards", "Buttons (primary/secondary)", "Form inputs", "Blog card images"],
+      "8px": ["Navigation contact button", "Form inputs"],
+      "9999px": ["Badges", "Pills", "Industry selector buttons"]
+    }
+  },
+
+  "responsiveBreakpoints": {
+    "sm": "640px",
+    "md": "768px",
+    "lg": "1024px",
+    "xl": "1280px",
+    "2xl": "1536px"
+  },
+
+  "componentExamples": {
+    "primaryButton": {
+      "html": "<button class=\"bg-[#2F4F4F] text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:-translate-y-1 transition-all\">Auf einen Kaffee treffen</button>",
+      "tailwind": "bg-[#2F4F4F] text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:-translate-y-1 transition-all duration-150"
+    },
+    "secondaryButton": {
+      "html": "<button class=\"bg-white text-slate-600 px-8 py-4 rounded-xl font-semibold border-2 border-slate-200 hover:border-slate-300 transition-all\">Was wir machen</button>",
+      "tailwind": "bg-white text-slate-600 px-8 py-4 rounded-xl font-semibold border-2 border-slate-200 hover:border-slate-300 transition-all duration-150"
+    },
+    "taglineBadge": {
+      "html": "<span class=\"bg-orange-100 text-orange-800 border border-orange-200 rounded-full px-4 py-1.5 text-sm font-semibold\">Digitale Transformation auf Hessisch</span>",
+      "tailwind": "bg-orange-100 text-orange-800 border border-orange-200 rounded-full px-4 py-1.5 text-sm font-semibold"
+    },
+    "card": {
+      "html": "<div class=\"bg-white rounded-xl shadow-lg p-6 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300\">...</div>",
+      "tailwind": "bg-white rounded-xl shadow-lg p-6 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+    },
+    "sectionLabel": {
+      "html": "<p class=\"text-[#2F4F4F] text-xs font-semibold tracking-wider uppercase mb-4\">UNSER ANSATZ</p>",
+      "tailwind": "text-[#2F4F4F] text-xs font-semibold tracking-wider uppercase mb-4"
+    },
+    "highlightedHeadline": {
+      "html": "<h1 class=\"text-5xl font-extrabold text-slate-900\">Optimierte digitale Prozesse für <span class=\"text-[#A63333] underline decoration-[#A63333]\">den schwälmer Mittelstand</span></h1>",
+      "tailwind": "text-5xl font-extrabold text-slate-900"
+    }
+  }
+}
