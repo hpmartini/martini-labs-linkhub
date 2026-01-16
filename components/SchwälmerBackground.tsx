@@ -14,7 +14,7 @@ export const SchwälmerBackground: React.FC = () => {
       />
 
       {/* The Schwalm Landscape - Bottom Aligned */}
-      <div className="absolute bottom-0 left-0 right-0 h-[50vh] text-slate-400/30 select-none">
+      <div className="absolute bottom-0 left-0 right-0 h-[50vh] text-slate-500 select-none opacity-80">
         <SchwalmLandscapeSVG className="w-full h-full object-cover object-bottom" />
       </div>
     </div>
