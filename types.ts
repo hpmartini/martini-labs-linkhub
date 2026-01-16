@@ -11,7 +11,8 @@ export interface LinkItem {
   url: string;
   type: LinkType;
   icon?: string;
-  logo?: string; // Path to logo image
+  logo?: string; // Path to logo image (light theme)
+  logoDark?: string; // Path to logo image (dark theme) - falls back to logo if not set
   color?: string; // 'cyan' | 'pink'
 }
 
