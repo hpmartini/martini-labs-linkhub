@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:synthwave": "VITE_THEME=synthwave vite build",
+    "build:schwaelmer": "VITE_THEME=schwaelmer vite build",
     "preview": "vite preview"
   },
   "dependencies": {

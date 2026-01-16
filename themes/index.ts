@@ -178,11 +178,10 @@ export const themes: Record<string, Theme> = {
   },
 };
 
-// Get theme name from build-time env var (set in vite.config.ts define)
-const THEME_NAME: string = import.meta.env.VITE_THEME;
+// Declare the global constant injected by Vite at build time
+declare const __VITE_THEME__: string;
 
 export const getTheme = (themeName?: string): Theme => {
-  const name = themeName || THEME_NAME || 'synthwave';
-  console.log('getTheme called, using theme:', name);
+  const name = themeName || __VITE_THEME__ || 'synthwave';
   return themes[name] || themes.synthwave;
 };

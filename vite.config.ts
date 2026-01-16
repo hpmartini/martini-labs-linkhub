@@ -4,8 +4,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
-    // Also check process.env directly for Vercel deployments
-    const viteTheme = process.env.VITE_THEME || env.VITE_THEME || 'synthwave';
+    const viteTheme = process.env.VITE_THEME || 'synthwave';
     console.log('Building with VITE_THEME:', viteTheme);
 
     return {
@@ -17,7 +16,7 @@ export default defineConfig(({ mode }) => {
       define: {
         'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY || process.env.GEMINI_API_KEY),
         'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY || process.env.GEMINI_API_KEY),
-        'import.meta.env.VITE_THEME': JSON.stringify(viteTheme)
+        '__VITE_THEME__': JSON.stringify(viteTheme)
       },
       resolve: {
         alias: {
