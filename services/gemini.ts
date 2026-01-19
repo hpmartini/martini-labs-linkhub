@@ -21,7 +21,7 @@ export const getGeminiResponse = async (history: Message[]) => {
         systemInstruction: SYSTEM_INSTRUCTION,
         temperature: 0.7,
         topP: 0.95,
-        maxOutputTokens: 500,
+        maxOutputTokens: 1024,
       },
     });
 
