@@ -71,10 +71,7 @@ const AppContent: React.FC = () => {
       <div className="relative z-10 w-full max-w-xl flex flex-col items-center gap-8">
         <Profile
           name="Hans-Peter Martini"
-          title1="Softwareentwickler/"
-          title2="Geschäftsführer von"
-          company="Martini Labs GmbH"
-          brand="Schwälmer Softwarehaus"
+          title1="Softwarearchitekt | CEO"
         />
 
         {/* Social Links - Just Icons */}
@@ -158,25 +155,6 @@ const AppContent: React.FC = () => {
                 }}
               />
               {showChat ? "Close Terminal" : "AI Assistant"}
-            </span>
-          </button>
-
-          <button
-            onClick={scrollToContact}
-            className={`flex-1 group relative px-6 py-4 rounded-xl transition-all duration-300 ${secondaryButtonClass}`}
-            style={
-              theme.isDark
-                ? {
-                    fontFamily: theme.fonts.heading,
-                    color: theme.colors.secondary,
-                    borderColor: theme.colors.secondary,
-                  }
-                : secondaryButtonStyle
-            }
-          >
-            <span className="relative z-10 flex items-center justify-center gap-2">
-              <Mail className="w-4 h-4" strokeWidth={2} />
-              Kontakt
             </span>
           </button>
         </div>

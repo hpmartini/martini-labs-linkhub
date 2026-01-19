@@ -2,21 +2,17 @@ import React from "react";
 import { useTheme } from "../themes/ThemeContext";
 import { SchwalmUnderline } from "./SchwalmUnderline";
 import { Download } from "lucide-react";
+import { Mail } from "lucide-react";
+
 
 interface ProfileProps {
   name: string;
   title1: string;
-  title2: string;
-  company: string;
-  brand: string;
 }
 
 export const Profile: React.FC<ProfileProps> = ({
   name,
   title1,
-  title2,
-  company,
-  brand,
 }) => {
   const theme = useTheme();
 
@@ -126,16 +122,35 @@ export const Profile: React.FC<ProfileProps> = ({
               }}
             >
               {title1}
-              {theme.isDark && <br />}
-              {theme.isDark ? "" : " "}
-              {title2}
             </span>
           </div>
 
           {/* Primary Action Buttons (replacing company text) */}
           <div className="flex flex-wrap justify-center gap-3 w-full max-w-lg">
             <button
-              className="px-5 py-2.5 rounded-lg text-sm font-bold transition-all transform hover:-translate-y-0.5"
+              onClick={scrollToContact}
+              className="flex px-5 py-2.5 rounded-lg text-sm font-bold transition-all transform hover:-translate-y-0.5 items-center justify-center gap-2"
+              style={{
+                backgroundColor: theme.isDark
+                  ? "rgba(236, 72, 153, 0.1)"
+                  : "#fdf2f8",
+                color: theme.isDark ? "#f472b6" : "#db2777",
+                border: `1px solid ${
+                  theme.isDark ? "rgba(244, 114, 182, 0.3)" : "#fbcfe8"
+                }`,
+                boxShadow: theme.isDark
+                  ? "0 0 10px rgba(236, 72, 153, 0.2)"
+                  : "0 2px 4px rgba(0,0,0,0.05)",
+              }}
+            >
+              <Mail className="w-4 h-4" strokeWidth={2} />
+              Kontakt
+            </button>
+
+            <a
+              href="/images/Hans-Peter Martini.vcf"
+              download
+              className="flex px-5 py-2.5 rounded-lg text-sm font-bold transition-all transform hover:-translate-y-0.5 items-center justify-center gap-2"
               style={{
                 backgroundColor: theme.isDark
                   ? "rgba(6, 182, 212, 0.1)"
@@ -152,44 +167,9 @@ export const Profile: React.FC<ProfileProps> = ({
                 document.dispatchEvent(new CustomEvent("toggle-ai-chat"))
               }
             >
-              AI Assistant
-            </button>
-
-            <a
-              href="/images/Hans-Peter Martini.vcf"
-              download
-              className="px-5 py-2.5 rounded-lg text-sm font-bold transition-all transform hover:-translate-y-0.5 flex items-center gap-2"
-              style={{
-                backgroundColor: theme.isDark
-                  ? "rgba(255, 255, 255, 0.05)"
-                  : "#ffffff",
-                color: theme.colors.text,
-                border: `1px solid ${theme.colors.border}`,
-                boxShadow: theme.isDark ? "none" : "0 2px 4px rgba(0,0,0,0.05)",
-              }}
-            >
               <Download className="w-4 h-4" strokeWidth={2} />
-              Kontaktdaten speichern
+              speichern
             </a>
-
-            <button
-              onClick={scrollToContact}
-              className="px-5 py-2.5 rounded-lg text-sm font-bold transition-all transform hover:-translate-y-0.5"
-              style={{
-                backgroundColor: theme.isDark
-                  ? "rgba(236, 72, 153, 0.1)"
-                  : "#fdf2f8",
-                color: theme.isDark ? "#f472b6" : "#db2777",
-                border: `1px solid ${
-                  theme.isDark ? "rgba(244, 114, 182, 0.3)" : "#fbcfe8"
-                }`,
-                boxShadow: theme.isDark
-                  ? "0 0 10px rgba(236, 72, 153, 0.2)"
-                  : "0 2px 4px rgba(0,0,0,0.05)",
-              }}
-            >
-              Kontakt
-            </button>
           </div>
         </div>
       </div>
