@@ -8,6 +8,7 @@ export const PRIMARY_LINKS: LinkItem[] = [
     color: "cyan",
     logo: "images/martini_labs_logo.webp",
     icon: "M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 004 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z",
+    description: "Unternehmens-Portfolio",
   },
   {
     label: "Schwälmer Softwarehaus",
@@ -17,6 +18,7 @@ export const PRIMARY_LINKS: LinkItem[] = [
     logo: "images/schwalm_software_logo.png",
     logoDark: "images/schwalm_software_logo_alternate.png",
     icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
+    description: "Digitalisierung der Schwalm",
   },
 ];
 

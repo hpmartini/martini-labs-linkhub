@@ -14,6 +14,7 @@ export interface LinkItem {
   logo?: string; // Path to logo image (light theme)
   logoDark?: string; // Path to logo image (dark theme) - falls back to logo if not set
   color?: string; // 'cyan' | 'pink'
+  description?: string;
 }
 
 export interface Message {

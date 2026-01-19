@@ -52,9 +52,9 @@ export const BlogFeed: React.FC = () => {
         />
         <h2
           className="text-[10px] tracking-[0.4em] uppercase"
-          style={{ fontFamily: theme.fonts.heading, color: theme.colors.textMuted }}
+          style={{ fontFamily: theme.fonts.heading, color: theme.colors.textSecondary }}
         >
-          {theme.isDark ? 'Incoming Transmissions' : 'Latest Articles'}
+          {theme.isDark ? 'Incoming Transmissions' : 'Aktuelle Blog-Artikel'}
         </h2>
         <div
           className="h-[1px] w-12"

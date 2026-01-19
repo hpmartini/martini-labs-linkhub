@@ -1,6 +1,5 @@
 import React from "react";
 import { useTheme } from "../themes/ThemeContext";
-import { SchwalmLandscapeSVG } from "./SchwalmLandscapeSVG";
 
 export const SchwälmerBackground: React.FC = () => {
   const theme = useTheme();
@@ -12,11 +11,6 @@ export const SchwälmerBackground: React.FC = () => {
         className="absolute inset-0"
         style={{ backgroundColor: theme.colors.background }}
       />
-
-      {/* The Schwalm Landscape - Bottom Aligned */}
-      <div className="absolute bottom-0 left-0 right-0 h-[50vh] text-slate-500 select-none opacity-80">
-        <SchwalmLandscapeSVG className="w-full h-full object-cover object-bottom" />
-      </div>
     </div>
   );
 };

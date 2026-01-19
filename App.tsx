@@ -56,6 +56,25 @@ const AppContent: React.FC = () => {
           brand="Schwälmer Softwarehaus"
         />
 
+        {/* Social Links - Just Icons */}
+        <div className="w-full">
+          <h2
+            className="text-center uppercase mb-6"
+            style={{
+              fontFamily: theme.fonts.heading,
+              color: theme.isDark
+                ? theme.colors.textSecondary
+                : theme.colors.primary,
+              fontSize: theme.isDark ? "10px" : "12px",
+              letterSpacing: theme.isDark ? "0.4em" : "0.1em",
+              fontWeight: theme.isDark ? "normal" : "600",
+            }}
+          >
+            Connect
+          </h2>
+          <SocialIcons links={SOCIAL_LINKS} />
+        </div>
+
         {/* Primary Website Links - Prominent Cards */}
         <div className="w-full space-y-6">
           <h2
@@ -63,7 +82,7 @@ const AppContent: React.FC = () => {
             style={{
               fontFamily: theme.fonts.heading,
               color: theme.isDark
-                ? theme.colors.textMuted
+                ? theme.colors.textSecondary
                 : theme.colors.primary,
               fontSize: theme.isDark ? "10px" : "12px",
               letterSpacing: theme.isDark ? "0.4em" : "0.1em",
@@ -91,25 +110,6 @@ const AppContent: React.FC = () => {
               );
             })}
           </div>
-        </div>
-
-        {/* Social Links - Just Icons */}
-        <div className="w-full">
-          <h2
-            className="text-center uppercase mb-6"
-            style={{
-              fontFamily: theme.fonts.heading,
-              color: theme.isDark
-                ? theme.colors.textMuted
-                : theme.colors.primary,
-              fontSize: theme.isDark ? "10px" : "12px",
-              letterSpacing: theme.isDark ? "0.4em" : "0.1em",
-              fontWeight: theme.isDark ? "normal" : "600",
-            }}
-          >
-            Connect
-          </h2>
-          <SocialIcons links={SOCIAL_LINKS} />
         </div>
 
         {/* Action Buttons */}
@@ -167,7 +167,7 @@ const AppContent: React.FC = () => {
                   d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                 />
               </svg>
-              Contact Me
+              Kontakt
             </span>
           </button>
         </div>

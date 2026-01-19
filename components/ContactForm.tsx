@@ -59,7 +59,7 @@ export const ContactForm: React.FC = () => {
           className="text-[10px] tracking-[0.4em] uppercase"
           style={{
             fontFamily: theme.fonts.heading,
-            color: theme.colors.textMuted,
+            color: theme.colors.textSecondary,
           }}
         >
           {theme.isDark ? "Transmission Uplink" : "Contact"}

@@ -214,7 +214,7 @@ export const LinkCard: React.FC<LinkCardProps> = ({ link, isProminent }) => {
                 transition: theme.transitions.default,
               }}
             >
-              Official Website
+              {link.description || "Official Website"}
             </span>
           </div>
         </div>

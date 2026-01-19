@@ -136,7 +136,7 @@ export const SocialFeed: React.FC = () => {
         />
         <h2
           className="text-[10px] tracking-[0.4em] uppercase"
-          style={{ fontFamily: theme.fonts.heading, color: theme.colors.textMuted }}
+          style={{ fontFamily: theme.fonts.heading, color: theme.colors.textSecondaryf }}
         >
           {theme.isDark ? 'Social Uplink' : 'Social Media'}
         </h2>
@@ -162,7 +162,7 @@ export const SocialFeed: React.FC = () => {
         </div>
       ) : (posts.length === 0 || hasError) ? (
         <div className="w-full flex flex-col items-center animate-fade-in">
-           <div className="mb-4 text-xs font-mono text-center" style={{ color: theme.colors.textMuted }}>
+           <div className="mb-4 text-xs font-mono text-center" style={{ color: theme.colors.textSecondary }}>
               <p>{theme.isDark ? 'DIRECT FEED SIGNAL BLOCKED BY PROTOCOL.' : 'Follow me on social media:'}</p>
               {theme.isDark && <p>ESTABLISH MANUAL UPLINK BELOW.</p>}
            </div>
