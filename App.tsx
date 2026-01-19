@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ThemeProvider, useTheme } from "./themes/ThemeContext";
 import { SynthwaveBackground } from "./components/SynthwaveBackground";
 import { SchwälmerBackground } from "./components/SchwälmerBackground";
@@ -14,6 +14,26 @@ import { PRIMARY_LINKS, SOCIAL_LINKS } from "./constants";
 const AppContent: React.FC = () => {
   const [showChat, setShowChat] = useState(false);
   const theme = useTheme();
+
+  // Track QR code scans from /hi route
+  useEffect(() => {
+    if (window.location.pathname === '/hi') {
+      // Fire and forget - don't await, don't block rendering
+      fetch('/api/qr-scan', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          screen: `${window.screen.width}x${window.screen.height}`,
+          language: navigator.language,
+          referrer: document.referrer,
+          site: window.location.hostname,
+        }),
+      }).catch(() => {}); // Silently ignore errors
+
+      // Clean URL to root without page reload
+      window.history.replaceState({}, '', '/');
+    }
+  }, []);
 
   const scrollToContact = () => {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
