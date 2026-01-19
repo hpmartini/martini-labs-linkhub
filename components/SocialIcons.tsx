@@ -2,33 +2,35 @@
 import React from 'react';
 import { LinkItem, LinkType } from '../types';
 import { useTheme } from '../themes/ThemeContext';
-import { Linkedin, Twitter, Instagram, CloudSun, AtSign } from 'lucide-react';
+import { SiLinkedin, SiX, SiInstagram, SiBluesky, SiMastodon } from 'react-icons/si';
+import { AtSign } from 'lucide-react';
+import { IconType } from 'react-icons';
 
 interface SocialIconsProps {
   links: LinkItem[];
 }
 
-// Map link types/labels to Lucide icons
-const getIconForLink = (link: LinkItem) => {
+// Map link types/labels to react-icons brand icons
+const getIconForLink = (link: LinkItem): IconType | typeof AtSign => {
   const label = link.label.toLowerCase();
 
   if (label.includes('linkedin') || link.type === LinkType.LINKEDIN) {
-    return Linkedin;
+    return SiLinkedin;
   }
   if (label.includes('twitter') || label.includes('x.com')) {
-    return Twitter;
+    return SiX;
   }
   if (label.includes('instagram')) {
-    return Instagram;
+    return SiInstagram;
   }
   if (label.includes('bluesky')) {
-    return CloudSun; // BlueSky-like icon
+    return SiBluesky;
   }
   if (label.includes('mastodon')) {
-    return AtSign; // Mastodon uses @ symbol
+    return SiMastodon;
   }
 
-  // Fallback to a generic icon
+  // Fallback to a generic icon (Lucide)
   return AtSign;
 };
 
@@ -74,7 +76,12 @@ export const SocialIcons: React.FC<SocialIconsProps> = ({ links }) => {
               onMouseEnter={(e) => e.currentTarget.style.color = accentColor}
               onMouseLeave={(e) => e.currentTarget.style.color = theme.isDark ? accentColor : theme.colors.textMuted}
             >
-              <IconComponent className="w-5 h-5" strokeWidth={1.5} />
+              {/* react-icons use size prop, Lucide uses className */}
+              {IconComponent === AtSign ? (
+                <IconComponent className="w-5 h-5" strokeWidth={1.5} />
+              ) : (
+                <IconComponent size={20} />
+              )}
             </div>
 
             {/* Background Glow - only for dark theme */}

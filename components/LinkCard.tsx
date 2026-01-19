@@ -1,6 +1,7 @@
 import React from "react";
 import { LinkItem } from "../types";
 import { useTheme } from "../themes/ThemeContext";
+import { ArrowRight } from "lucide-react";
 
 interface LinkCardProps {
   link: LinkItem;
@@ -175,20 +176,7 @@ export const LinkCard: React.FC<LinkCardProps> = ({ link, isProminent }) => {
                   transition: theme.transitions.default,
                 }}
               >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d={link.icon}
-                  />
-                </svg>
+                <link.icon className="w-6 h-6" strokeWidth={1.5} />
               </div>
             )
           )}
@@ -231,20 +219,7 @@ export const LinkCard: React.FC<LinkCardProps> = ({ link, isProminent }) => {
             transition: theme.transitions.default,
           }}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M14 5l7 7m0 0l-7 7m7-7H3"
-            />
-          </svg>
+          <ArrowRight className="h-5 w-5" strokeWidth={2} />
         </div>
       </div>
 

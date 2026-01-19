@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useTheme } from "../themes/ThemeContext";
+import { Check, ArrowRight } from "lucide-react";
 
 export const ContactForm: React.FC = () => {
   const theme = useTheme();
@@ -112,19 +113,7 @@ export const ContactForm: React.FC = () => {
                 color: theme.colors.secondary,
               }}
             >
-              <svg
-                className="w-8 h-8"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
+              <Check className="w-8 h-8" strokeWidth={2} />
             </div>
             <h3
               className="text-xl mb-2"
@@ -275,19 +264,7 @@ export const ContactForm: React.FC = () => {
                   ? "Initialize Upload"
                   : "Send Message"}
                 {!status.includes("submitting") && (
-                  <svg
-                    className="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
+                  <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" strokeWidth={2} />
                 )}
               </span>
               <div

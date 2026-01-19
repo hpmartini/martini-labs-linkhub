@@ -1,6 +1,7 @@
 import React from "react";
 import { useTheme } from "../themes/ThemeContext";
 import { SchwalmUnderline } from "./SchwalmUnderline";
+import { Download } from "lucide-react";
 
 interface ProfileProps {
   name: string;
@@ -70,19 +71,7 @@ export const Profile: React.FC<ProfileProps> = ({
               download
               className="px-3 py-1 text-[8px] font-bold text-slate-800 bg-white rounded-full hover:bg-gray-100 transition-colors shadow-lg transform hover:scale-105 flex items-center gap-1"
             >
-              <svg
-                className="w-2 h-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                />
-              </svg>
+              <Download className="w-2 h-2" strokeWidth={2} />
               save contact
             </a>
           </div>
@@ -179,19 +168,7 @@ export const Profile: React.FC<ProfileProps> = ({
                 boxShadow: theme.isDark ? "none" : "0 2px 4px rgba(0,0,0,0.05)",
               }}
             >
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                />
-              </svg>
+              <Download className="w-4 h-4" strokeWidth={2} />
               Kontaktdaten speichern
             </a>
 

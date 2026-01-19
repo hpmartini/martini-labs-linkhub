@@ -10,7 +10,7 @@ export interface LinkItem {
   label: string;
   url: string;
   type: LinkType;
-  icon?: string;
+  icon?: React.ComponentType<{ className?: string; strokeWidth?: number }>;
   logo?: string; // Path to logo image (light theme)
   logoDark?: string; // Path to logo image (dark theme) - falls back to logo if not set
   color?: string; // 'cyan' | 'pink'

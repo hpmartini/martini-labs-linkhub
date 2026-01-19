@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { BlogPost } from '../types';
 import { fetchLatestBlogPosts } from '../services/rss';
 import { useTheme } from '../themes/ThemeContext';
+import { ArrowRight } from 'lucide-react';
 
 export const BlogFeed: React.FC = () => {
   const theme = useTheme();
@@ -159,9 +160,7 @@ export const BlogFeed: React.FC = () => {
                   style={{ color: theme.colors.textMuted, fontFamily: theme.fonts.heading }}
                 >
                   <span className="tracking-wider">{theme.isDark ? 'READ LOG' : 'Read more'}</span>
-                  <svg className="w-3 h-3 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
+                  <ArrowRight className="w-3 h-3 transform transition-transform group-hover:translate-x-1" strokeWidth={2} />
                 </div>
 
                 {/* Hover Glow */}
