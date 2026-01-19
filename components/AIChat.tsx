@@ -3,11 +3,97 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Message } from '../types';
 import { getGeminiResponse } from '../services/gemini';
 import { useTheme } from '../themes/ThemeContext';
+import { WELCOME_MESSAGE } from '../constants';
+
+// Simple markdown renderer for chat messages
+const renderMarkdown = (text: string): React.ReactNode => {
+  const lines = text.split('\n');
+  const elements: React.ReactNode[] = [];
+  let currentList: string[] = [];
+  let listKey = 0;
+
+  const flushList = () => {
+    if (currentList.length > 0) {
+      elements.push(
+        <ul key={`list-${listKey++}`} className="list-disc list-inside space-y-1 my-2">
+          {currentList.map((item, i) => (
+            <li key={i}>{formatInlineMarkdown(item)}</li>
+          ))}
+        </ul>
+      );
+      currentList = [];
+    }
+  };
+
+  const formatInlineMarkdown = (line: string): React.ReactNode => {
+    // Handle bold and italic
+    const parts: React.ReactNode[] = [];
+    let remaining = line;
+    let partKey = 0;
+
+    while (remaining.length > 0) {
+      // Bold: **text**
+      const boldMatch = remaining.match(/\*\*(.+?)\*\*/);
+      // Italic: *text*
+      const italicMatch = remaining.match(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/);
+
+      if (boldMatch && (!italicMatch || boldMatch.index! <= italicMatch.index!)) {
+        if (boldMatch.index! > 0) {
+          parts.push(<span key={partKey++}>{remaining.slice(0, boldMatch.index)}</span>);
+        }
+        parts.push(<strong key={partKey++} className="font-semibold">{boldMatch[1]}</strong>);
+        remaining = remaining.slice(boldMatch.index! + boldMatch[0].length);
+      } else if (italicMatch) {
+        if (italicMatch.index! > 0) {
+          parts.push(<span key={partKey++}>{remaining.slice(0, italicMatch.index)}</span>);
+        }
+        parts.push(<em key={partKey++}>{italicMatch[1]}</em>);
+        remaining = remaining.slice(italicMatch.index! + italicMatch[0].length);
+      } else {
+        parts.push(<span key={partKey++}>{remaining}</span>);
+        break;
+      }
+    }
+
+    return parts.length === 1 ? parts[0] : <>{parts}</>;
+  };
+
+  lines.forEach((line, index) => {
+    const trimmedLine = line.trim();
+
+    // Bullet points (- or • or *)
+    if (/^[-•*]\s+/.test(trimmedLine)) {
+      currentList.push(trimmedLine.replace(/^[-•*]\s+/, ''));
+      return;
+    }
+
+    // Flush any pending list
+    flushList();
+
+    // Empty line = paragraph break
+    if (trimmedLine === '') {
+      elements.push(<div key={`br-${index}`} className="h-2" />);
+      return;
+    }
+
+    // Regular paragraph
+    elements.push(
+      <p key={`p-${index}`} className="leading-relaxed">
+        {formatInlineMarkdown(trimmedLine)}
+      </p>
+    );
+  });
+
+  // Flush any remaining list
+  flushList();
+
+  return <div className="space-y-1">{elements}</div>;
+};
 
 export const AIChat: React.FC = () => {
   const theme = useTheme();
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'assistant', content: 'Willkommen! I am the Digital Twin of Hans-Peter Martini. How can I help you today regarding Martini Labs or our software solutions?' }
+    { role: 'assistant', content: WELCOME_MESSAGE }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -88,7 +174,7 @@ export const AIChat: React.FC = () => {
                     : theme.isDark ? '#3f3f46' : theme.colors.border}`,
                 }}
               >
-                {msg.content}
+                {msg.role === 'assistant' ? renderMarkdown(msg.content) : msg.content}
               </div>
             </div>
           ))}
