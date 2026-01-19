@@ -284,9 +284,9 @@ export const SYSTEM_INSTRUCTION = currentTheme === 'schwaelmer'
 // ============================================================================
 // THEME-BASED WELCOME MESSAGES
 // ============================================================================
-export const MARTINI_LABS_WELCOME = 'Willkommen! Ich bin der Digital Twin von Hans-Peter Martini. Wie kann ich dir heute bei deinem Software-Projekt oder deinen Fragen zu Martini Labs helfen?';
+export const MARTINI_LABS_WELCOME = 'Hallo! Ich bin der Digital Twin von Hans-Peter Martini. Wie kann ich dir heute bei deinem Software-Projekt oder deinen Fragen zu Martini Labs helfen?';
 
-export const SCHWAELMER_WELCOME = 'Grüß Gott! Ich bin der digitale Zwilling von Hans-Peter Martini vom Schwälmer Softwarehaus. Wie kann ich Ihnen heute bei der Digitalisierung Ihres Betriebs helfen?';
+export const SCHWAELMER_WELCOME = 'Willkommen! Ich bin der digitale Zwilling von Hans-Peter Martini vom Schwälmer Softwarehaus. Wie kann ich Ihnen heute bei der Digitalisierung Ihres Betriebs helfen?';
 
 export const WELCOME_MESSAGE = currentTheme === 'schwaelmer'
   ? SCHWAELMER_WELCOME
