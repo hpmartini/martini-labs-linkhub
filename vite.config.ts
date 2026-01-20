@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
-    const viteTheme = process.env.VITE_THEME || 'synthwave';
+    const viteTheme = (process.env.VITE_THEME || 'synthwave').trim();
     console.log('Building with VITE_THEME:', viteTheme);
 
     return {
