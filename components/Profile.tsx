@@ -24,18 +24,18 @@ export const Profile: React.FC<ProfileProps> = ({
   return (
     <div className="flex flex-col items-center text-center animate-fade-in w-full">
       {/* Avatar */}
-      <div className="relative group mb-8 z-50">
+      <div className="relative mb-8 z-50">
         {/* Glow effect - only for dark theme */}
         {theme.isDark && (
           <div
-            className="absolute -inset-1 rounded-full blur-md opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"
+            className="absolute -inset-1 rounded-full blur-md opacity-60"
             style={{
               background: `linear-gradient(to right, ${theme.colors.primary}, ${theme.colors.secondary})`,
             }}
           />
         )}
         <div
-          className="relative w-64 h-64 rounded-full transition-all duration-500 ease-out transform group-hover:scale-[3] group-hover:z-50 shadow-2xl overflow-hidden"
+          className="relative w-64 h-64 rounded-full shadow-2xl overflow-hidden"
           style={{
             border: theme.isDark
               ? "2px solid rgba(255,255,255,0.3)"
@@ -53,24 +53,6 @@ export const Profile: React.FC<ProfileProps> = ({
               theme.isDark ? "grayscale-[0.2] contrast-125" : ""
             }`}
           />
-
-          {/* Hover Actions Overlay */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/60 backdrop-blur-sm">
-            <button
-              onClick={scrollToContact}
-              className="px-3 py-1 text-[8px] font-bold text-white bg-blue-600 rounded-full hover:bg-blue-500 transition-colors shadow-lg transform hover:scale-105"
-            >
-              Kontakt
-            </button>
-            <a
-              href="/images/Hans-Peter Martini.vcf"
-              download
-              className="px-3 py-1 text-[8px] font-bold text-slate-800 bg-white rounded-full hover:bg-gray-100 transition-colors shadow-lg transform hover:scale-105 flex items-center gap-1"
-            >
-              <Download className="w-2 h-2" strokeWidth={2} />
-              save contact
-            </a>
-          </div>
         </div>
       </div>
 
