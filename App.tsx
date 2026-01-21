@@ -164,8 +164,9 @@ const AppContent: React.FC = () => {
         {/* Dynamic Blog Feed */}
         <BlogFeed />
 
-        {/* Dynamic Social Feed (LinkedIn/X) */}
+        {/* Dynamic Social Feed (LinkedIn/X) 
         <SocialFeed />
+        */}
 
         {/* Contact Form */}
         <ContactForm />
