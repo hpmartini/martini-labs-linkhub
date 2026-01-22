@@ -16,6 +16,7 @@ export default defineConfig(({ mode }) => {
       define: {
         'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY || process.env.GEMINI_API_KEY),
         'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY || process.env.GEMINI_API_KEY),
+        'process.env.FORMSPREE_ENDPOINT': JSON.stringify(env.FORMSPREE_ENDPOINT || process.env.FORMSPREE_ENDPOINT),
         '__VITE_THEME__': JSON.stringify(viteTheme)
       },
       resolve: {

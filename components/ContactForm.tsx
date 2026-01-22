@@ -16,7 +16,7 @@ export const ContactForm: React.FC = () => {
     const data = new FormData(form);
 
     try {
-      const response = await fetch("https://formspree.io/f/xykkrpgv", {
+      const response = await fetch(process.env.FORMSPREE_ENDPOINT!, {
         method: "POST",
         body: data,
         headers: {
