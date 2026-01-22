@@ -16,8 +16,7 @@ export const ContactForm: React.FC = () => {
     const data = new FormData(form);
 
     try {
-      // NOTE: Replace 'YOUR_FORMSPREE_ID' with your actual Formspree form ID (e.g., 'mrgwlekd')
-      const response = await fetch("https://formspree.io/f/YOUR_FORMSPREE_ID", {
+      const response = await fetch("https://formspree.io/f/xykkrpgv", {
         method: "POST",
         body: data,
         headers: {
