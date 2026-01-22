@@ -1,8 +1,7 @@
 import React from "react";
 import { useTheme } from "../themes/ThemeContext";
 import { SchwalmUnderline } from "./SchwalmUnderline";
-import { Download } from "lucide-react";
-import { Mail } from "lucide-react";
+import { Download, Mail, Phone } from "lucide-react";
 
 
 interface ProfileProps {
@@ -145,12 +144,29 @@ export const Profile: React.FC<ProfileProps> = ({
                   ? "0 0 10px rgba(6, 182, 212, 0.2)"
                   : "0 2px 4px rgba(0,0,0,0.05)",
               }}
-              onClick={() =>
-                document.dispatchEvent(new CustomEvent("toggle-ai-chat"))
-              }
             >
               <Download className="w-4 h-4" strokeWidth={2} />
               speichern
+            </a>
+
+            <a
+              href="tel:+4915678312377"
+              className="flex px-5 py-2.5 rounded-lg text-sm font-bold transition-all transform hover:-translate-y-0.5 items-center justify-center gap-2"
+              style={{
+                backgroundColor: theme.isDark
+                  ? "rgba(34, 197, 94, 0.1)"
+                  : "#f0fdf4",
+                color: theme.isDark ? "#4ade80" : "#16a34a",
+                border: `1px solid ${
+                  theme.isDark ? "rgba(74, 222, 128, 0.3)" : "#bbf7d0"
+                }`,
+                boxShadow: theme.isDark
+                  ? "0 0 10px rgba(34, 197, 94, 0.2)"
+                  : "0 2px 4px rgba(0,0,0,0.05)",
+              }}
+            >
+              <Phone className="w-4 h-4" strokeWidth={2} />
+              Anrufen
             </a>
           </div>
         </div>
