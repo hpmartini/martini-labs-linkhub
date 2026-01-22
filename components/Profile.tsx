@@ -146,7 +146,7 @@ export const Profile: React.FC<ProfileProps> = ({
               }}
             >
               <Download className="w-4 h-4" strokeWidth={2} />
-              speichern
+              VCF speichern
             </a>
 
             <a
