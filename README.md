@@ -1,20 +1,88 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Martini Labs – LinkHub
 
-# Run and deploy your AI Studio app
+Persönliche Link-Seite (Linktree-Alternative) für Hans-Peter Martini mit AI-Chat und dynamischem Content.
 
-This contains everything you need to run your app locally.
+## 🌐 Live
 
-View your app in AI Studio: https://ai.studio/apps/drive/13xIXbFwfGhqlNnqLFmVYfkyNUlLR56Gb
+**https://links.martini-labs.de** *(oder vergleichbar)*
 
-## Run Locally
+## ✨ Features
 
-**Prerequisites:**  Node.js
+- **Multi-Theme Support:**
+  - 🌃 Synthwave (Dark Mode) – Neon-Retro-Ästhetik
+  - 🏔️ Schwälmer (Light Mode) – Regional, traditionell
+- **AI Chat Assistant** – Gemini-powered Chatbot
+- **Dynamischer Blog-Feed** – Automatisch aus RSS
+- **Kontaktformular** – Direkte Anfragen
+- **QR-Code Tracking** – Analytics für Print-Material
+- **Social Links** – Alle Plattformen auf einen Blick
 
+## 🛠 Tech Stack
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+| Kategorie | Technologie |
+|-----------|-------------|
+| Framework | React 19, Vite |
+| AI | Google Gemini API |
+| Icons | Lucide React, React Icons |
+| Hosting | Vercel |
+
+## 🎨 Themes
+
+Build-Varianten für verschiedene Themes:
+
+```bash
+# Standard (auto-detect)
+npm run build
+
+# Synthwave Theme
+npm run build:synthwave
+
+# Schwälmer Theme  
+npm run build:schwaelmer
+```
+
+## 🚀 Entwicklung
+
+```bash
+# Dependencies installieren
+npm install
+
+# Entwicklungsserver
+npm run dev
+
+# Produktions-Build
+npm run build
+```
+
+## 📁 Projektstruktur
+
+```
+├── components/
+│   ├── AIChat.tsx          # Gemini Chat
+│   ├── BlogFeed.tsx        # RSS Blog Integration
+│   ├── ContactForm.tsx     # Kontaktformular
+│   ├── LinkCard.tsx        # Link-Karten
+│   ├── Profile.tsx         # Profil-Header
+│   ├── SocialIcons.tsx     # Social Media Links
+│   ├── SynthwaveBackground.tsx
+│   └── SchwälmerBackground.tsx
+├── themes/                 # Theme-Konfiguration
+├── constants.tsx           # Links, Social Media
+├── api/                    # Serverless (QR Tracking)
+└── data/                   # Statische Daten
+```
+
+## 🔧 Umgebungsvariablen
+
+```env
+GEMINI_API_KEY=...      # AI Chat
+VITE_THEME=...          # Theme Override (synthwave/schwaelmer)
+```
+
+## 📝 Ursprung
+
+Initialisiert mit [Google AI Studio](https://aistudio.google.com), erweitert mit AI-Chat und Multi-Theme.
+
+---
+
+*Hans-Peter Martini – Softwarearchitekt & CEO, Martini Labs GmbH*
