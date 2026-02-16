@@ -31,7 +31,7 @@ jobs:
           LINKEDIN_PASSWORD: ${{ secrets.LINKEDIN_PASSWORD }}
           TWITTER_EMAIL: ${{ secrets.TWITTER_EMAIL }}
           TWITTER_PASSWORD: ${{ secrets.TWITTER_PASSWORD }}
-        run: npx ts-node scripts/scrape-social.ts
+        run: npx tsx scripts/scrape-social.ts
 
       - name: Check for changes
         id: check_changes
