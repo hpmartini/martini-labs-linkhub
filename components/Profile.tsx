@@ -46,8 +46,9 @@ export const Profile: React.FC<ProfileProps> = ({
           }}
         >
           <img
-            src={theme.isDark ? "images/hape.jpeg" : "images/hape_schwalm.jpeg"}
+            src={theme.isDark ? "images/hape_optimized.jpeg" : "images/hape_schwalm_optimized.jpeg"}
             alt={name}
+            loading="eager"
             className={`w-full h-full object-cover rounded-full ${
               theme.isDark ? "grayscale-[0.2] contrast-125" : ""
             }`}

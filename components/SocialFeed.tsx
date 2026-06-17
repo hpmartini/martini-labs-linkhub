@@ -137,7 +137,7 @@ export const SocialFeed: React.FC = () => {
         />
         <h2
           className="text-[10px] tracking-[0.4em] uppercase"
-          style={{ fontFamily: theme.fonts.heading, color: theme.colors.textSecondaryf }}
+          style={{ fontFamily: theme.fonts.heading, color: theme.colors.textSecondary }}
         >
           {theme.isDark ? 'Social Uplink' : 'Social Media'}
         </h2>

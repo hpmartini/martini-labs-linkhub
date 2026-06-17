@@ -1,16 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { ThemeProvider, useTheme } from "./themes/ThemeContext";
 import { SynthwaveBackground } from "./components/SynthwaveBackground";
 import { SchwälmerBackground } from "./components/SchwälmerBackground";
 import { Profile } from "./components/Profile";
 import { LinkCard } from "./components/LinkCard";
 import { SocialIcons } from "./components/SocialIcons";
-import { AIChat } from "./components/AIChat";
-import { BlogFeed } from "./components/BlogFeed";
-import { SocialFeed } from "./components/SocialFeed";
-import { ContactForm } from "./components/ContactForm";
 import { PRIMARY_LINKS, SOCIAL_LINKS } from "./constants";
-import { Mail } from "lucide-react";
+
+// Lazy load below-the-fold components for faster initial render
+const AIChat = lazy(() => import("./components/AIChat").then(m => ({ default: m.AIChat })));
+const BlogFeed = lazy(() => import("./components/BlogFeed").then(m => ({ default: m.BlogFeed })));
+const ContactForm = lazy(() => import("./components/ContactForm").then(m => ({ default: m.ContactForm })));
+
+// Minimal loading fallback
+const LoadingFallback = () => null;
 
 const AppContent: React.FC = () => {
   const [showChat, setShowChat] = useState(false);
@@ -110,23 +113,9 @@ const AppContent: React.FC = () => {
             Core Ventures
           </h2>
           <div className="space-y-4">
-            {PRIMARY_LINKS.map((link) => {
-              // Override icon for Schwälmer Softwarehaus in dark mode
-              const iconToUse =
-                theme.isDark && link.label.includes("Schwälmer")
-                  ? "images/schwalm_software_logo_alternate.png"
-                  : link.icon;
-
-              const linkWithThemeIcon = { ...link, icon: iconToUse };
-
-              return (
-                <LinkCard
-                  key={link.url}
-                  link={linkWithThemeIcon}
-                  isProminent={true}
-                />
-              );
-            })}
+            {PRIMARY_LINKS.map((link) => (
+              <LinkCard key={link.url} link={link} isProminent={true} />
+            ))}
           </div>
         </div>
 
@@ -159,17 +148,23 @@ const AppContent: React.FC = () => {
           </button>
         </div>
 
-        {showChat && <AIChat />}
+        <Suspense fallback={<LoadingFallback />}>
+          {showChat && <AIChat />}
+        </Suspense>
 
-        {/* Dynamic Blog Feed */}
-        <BlogFeed />
+        {/* Dynamic Blog Feed - lazy loaded */}
+        <Suspense fallback={<LoadingFallback />}>
+          <BlogFeed />
+        </Suspense>
 
-        {/* Dynamic Social Feed (LinkedIn/X) 
+        {/* Dynamic Social Feed (LinkedIn/X)
         <SocialFeed />
         */}
 
-        {/* Contact Form */}
-        <ContactForm />
+        {/* Contact Form - lazy loaded */}
+        <Suspense fallback={<LoadingFallback />}>
+          <ContactForm />
+        </Suspense>
 
         <footer
           className="mt-12 text-[10px] font-light tracking-[0.3em] uppercase"

@@ -1,10 +1,18 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 
+// Check if mobile/low-power device
+const isMobileDevice = () => {
+  if (typeof window === 'undefined') return false;
+  return window.innerWidth < 768 ||
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+};
+
 const GridCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [mousePos, setMousePos] = useState<{x: number, y: number} | null>(null);
-  
+  const [isMobile] = useState(isMobileDevice);
+
   const animationRef = useRef<number>(0);
   const offsetRef = useRef(0);
   const mousePosRef = useRef<{x: number, y: number} | null>(null);
@@ -17,14 +25,25 @@ const GridCanvas = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d', { alpha: true });
-    
+
     // Grid Configuration
     const fov = 300;
     const camHeight = 120; // Camera height above ground
-    const gridSize = 40;   // Size of grid cells
-    const speed = 1.0;     // Movement speed (pixels per frame)
-    
-    const loop = () => {
+    const gridSize = isMobile ? 60 : 40; // Larger cells on mobile = fewer lines
+    const speed = isMobile ? 0.5 : 1.0; // Slower on mobile
+
+    // Frame rate limiting for mobile (target 30fps instead of 60)
+    let lastFrameTime = 0;
+    const targetFPS = isMobile ? 30 : 60;
+    const frameInterval = 1000 / targetFPS;
+
+    const loop = (timestamp: number = 0) => {
+      // Skip frames on mobile to reduce CPU load
+      if (isMobile && timestamp - lastFrameTime < frameInterval) {
+        animationRef.current = requestAnimationFrame(loop);
+        return;
+      }
+      lastFrameTime = timestamp;
         if (!ctx || !canvas) return;
         const width = canvas.width;
         const height = canvas.height;
@@ -177,9 +196,13 @@ const GridCanvas = () => {
 
         animationRef.current = requestAnimationFrame(loop);
     }
-    loop();
-    return () => { if (animationRef.current) cancelAnimationFrame(animationRef.current); };
-  }, []);
+    // Start animation after a brief delay to prioritize initial render
+    const startTimeout = setTimeout(() => loop(0), isMobile ? 500 : 0);
+    return () => {
+      clearTimeout(startTimeout);
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+    };
+  }, [isMobile]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
@@ -209,22 +232,22 @@ const GridCanvas = () => {
      const updateSize = () => {
          const parent = document.querySelector('.grid-container-wrapper');
          if (parent) {
-             // High DPI multiplier
-             const dpr = window.devicePixelRatio || 1;
-             setSize({ 
-                 w: parent.clientWidth * dpr, 
-                 h: parent.clientHeight * dpr 
+             // Limit DPR on mobile to reduce canvas size (major perf gain)
+             const dpr = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 2);
+             setSize({
+                 w: parent.clientWidth * dpr,
+                 h: parent.clientHeight * dpr
              });
          } else {
-             // Fallback
-             setSize({ w: window.innerWidth * 2, h: window.innerHeight });
+             const dpr = isMobile ? 1 : 2;
+             setSize({ w: window.innerWidth * dpr, h: window.innerHeight });
          }
      }
      window.addEventListener('resize', updateSize);
      // Delay slightly to ensure layout is done
      setTimeout(updateSize, 0);
      return () => window.removeEventListener('resize', updateSize);
-  }, []);
+  }, [isMobile]);
 
   return (
     <canvas 

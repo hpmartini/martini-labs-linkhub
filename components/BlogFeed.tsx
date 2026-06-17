@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { BlogPost } from '../types';
 import { fetchLatestBlogPosts } from '../services/rss';
 import { useTheme } from '../themes/ThemeContext';
@@ -10,9 +10,11 @@ export const BlogFeed: React.FC = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const mountedRef = useRef(true);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const loadPosts = async () => {
+  const loadPosts = useCallback(async () => {
     setIsLoading(true);
     setError(false);
     try {
@@ -29,15 +31,36 @@ export const BlogFeed: React.FC = () => {
         setIsLoading(false);
       }
     }
-  };
+  }, []);
 
+  // Lazy-load: only fetch when component becomes visible
   useEffect(() => {
     mountedRef.current = true;
-    loadPosts();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !isVisible) {
+          setIsVisible(true);
+        }
+      },
+      { rootMargin: '100px' } // Start loading 100px before visible
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
     return () => {
       mountedRef.current = false;
+      observer.disconnect();
     };
-  }, []);
+  }, [isVisible]);
+
+  // Only load posts when visible
+  useEffect(() => {
+    if (isVisible) {
+      loadPosts();
+    }
+  }, [isVisible, loadPosts]);
 
   const cardBg = theme.isDark ? 'bg-zinc-900/40' : 'bg-white/80';
   const borderBase = theme.isDark ? 'border-zinc-800' : 'border-gray-200';
@@ -45,7 +68,7 @@ export const BlogFeed: React.FC = () => {
   const errorBg = theme.isDark ? 'bg-black/70' : 'bg-white/90';
 
   return (
-    <div className="w-full mt-12 animate-fade-in">
+    <div ref={containerRef} className="w-full mt-12 animate-fade-in">
       <div className="flex items-center justify-center gap-4 mb-6">
         <div
           className="h-[1px] w-12"

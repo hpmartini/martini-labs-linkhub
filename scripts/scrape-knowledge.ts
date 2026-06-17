@@ -1,4 +1,4 @@
-import puppeteer from 'puppeteer';
+import puppeteer, { type Page } from 'puppeteer';
 import * as fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
@@ -34,7 +34,7 @@ async function delay(ms: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function scrapePage(page: puppeteer.Page, url: string): Promise<PageContent> {
+async function scrapePage(page: Page, url: string): Promise<PageContent> {
   try {
     console.log(`Scraping: ${url}`);
     await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
