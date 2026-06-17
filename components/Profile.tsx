@@ -1,7 +1,7 @@
 import React from "react";
 import { useTheme } from "../themes/ThemeContext";
 import { SchwalmUnderline } from "./SchwalmUnderline";
-import { Download, Mail, Phone } from "lucide-react";
+import { CalendarClock, Download, Mail, Phone } from "lucide-react";
 
 
 interface ProfileProps {
@@ -168,6 +168,28 @@ export const Profile: React.FC<ProfileProps> = ({
             >
               <Phone className="w-4 h-4" strokeWidth={2} />
               Anrufen
+            </a>
+
+            <a
+              href="https://calendly.com/martini-labs/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex px-5 py-2.5 rounded-lg text-sm font-bold transition-all transform hover:-translate-y-0.5 items-center justify-center gap-2"
+              style={{
+                backgroundColor: theme.isDark
+                  ? "rgba(168, 85, 247, 0.1)"
+                  : "#faf5ff",
+                color: theme.isDark ? "#c084fc" : "#9333ea",
+                border: `1px solid ${
+                  theme.isDark ? "rgba(192, 132, 252, 0.3)" : "#e9d5ff"
+                }`,
+                boxShadow: theme.isDark
+                  ? "0 0 10px rgba(168, 85, 247, 0.2)"
+                  : "0 2px 4px rgba(0,0,0,0.05)",
+              }}
+            >
+              <CalendarClock className="w-4 h-4" strokeWidth={2} />
+              Gespräch vereinbaren
             </a>
           </div>
         </div>
