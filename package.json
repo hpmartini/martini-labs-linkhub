@@ -8,7 +8,8 @@
     "build": "vite build",
     "build:synthwave": "VITE_THEME=synthwave vite build",
     "build:schwaelmer": "VITE_THEME=schwaelmer vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate:previews": "tsx scripts/generate-previews.ts"
   },
   "dependencies": {
     "@google/genai": "^1.35.0",

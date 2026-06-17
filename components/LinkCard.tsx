@@ -89,13 +89,15 @@ export const LinkCard: React.FC<LinkCardProps> = ({ link, isProminent }) => {
                 {theme.isDark ? "INITIALIZING..." : "Loading..."}
               </div>
 
-              {/* Live Preview - lazy loaded */}
-              <img
-                src={`https://image.thum.io/get/width/600/crop/800/noanimate/${link.url}`}
-                alt="Site Preview"
-                className="relative z-10 w-full h-full object-cover opacity-90"
-                loading="lazy"
-              />
+              {/* Live Preview - locally generated screenshot, lazy loaded */}
+              {link.preview && (
+                <img
+                  src={link.preview}
+                  alt={`${link.label} Preview`}
+                  className="relative z-10 w-full h-full object-cover object-top opacity-90"
+                  loading="lazy"
+                />
+              )}
 
               {/* Scanlines Overlay - only for dark theme */}
               {theme.isDark && (

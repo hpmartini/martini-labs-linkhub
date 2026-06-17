@@ -15,6 +15,7 @@ export interface LinkItem {
   logoDark?: string; // Path to logo image (dark theme) - falls back to logo if not set
   color?: string; // 'cyan' | 'pink'
   description?: string;
+  preview?: string; // Path to a locally generated hover-preview screenshot
 }
 
 export interface Message {
