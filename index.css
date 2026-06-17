@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+.font-orbitron {
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* --- 3D Grid Animation --- */
+.perspective-container {
+  perspective: 600px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.moving-grid {
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  bottom: -100%;
+  left: -50%;
+  /* Grid is now handled via Canvas for interaction */
+  transform-origin: 50% 0%;
+  transform: rotateX(60deg);
+  /* Slight outer glow on the grid container to bloom the lines */
+  filter: drop-shadow(0 0 4px rgba(0, 255, 255, 0.4));
+  /* Fade out into the distance */
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 80%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 80%);
+}
+
+/* --- Neon Effects --- */
+.neon-text-pink {
+  text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff;
+}
+.neon-text-cyan {
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+}
+
+.glass {
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* --- Retro Sun --- */
+.sun {
+  background: linear-gradient(to bottom, #ff00ff 0%, #ffcc00 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 60px rgba(255, 0, 255, 0.5);
+}
+
+/* Sun Stripes */
+.sun-band {
+  position: absolute;
+  width: 100%;
+  background-color: #050505; /* Matches sky background color to cut through */
+  left: 0;
+}

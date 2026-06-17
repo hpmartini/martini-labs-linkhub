@@ -8,10 +8,10 @@ export const PRIMARY_LINKS: LinkItem[] = [
     url: "https://martini-labs.de",
     type: LinkType.WEBSITE,
     color: "cyan",
-    logo: "images/logo-rund.png",
+    logo: "images/logo-rund.webp",
     icon: Box,
     description: "Unternehmens-Portfolio",
-    preview: "images/previews/martini-labs-de.png",
+    preview: "images/previews/martini-labs-de.webp",
   },
   {
     label: "Martini Labs Consulting",
@@ -21,7 +21,7 @@ export const PRIMARY_LINKS: LinkItem[] = [
     logo: "images/martini_labs_logo.webp",
     icon: Box,
     description: "Beratung & Softwareentwicklung",
-    preview: "images/previews/martini-software.png",
+    preview: "images/previews/martini-software.webp",
   },
   {
     label: "Schwälmer Softwarehaus",
@@ -32,7 +32,7 @@ export const PRIMARY_LINKS: LinkItem[] = [
     logoDark: "images/schwalm_software_logo_alternate.png",
     icon: Home,
     description: "Digitalisierung der Schwalm",
-    preview: "images/previews/schwaelmer-softwarehaus-de.png",
+    preview: "images/previews/schwaelmer-softwarehaus-de.webp",
   },
 ];
 

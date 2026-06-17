@@ -27,7 +27,7 @@ async function capture(page: Page, url: string, outFile: string): Promise<boolea
     await page.goto(url, { waitUntil: 'networkidle2', timeout: 45000 });
     // Give late-loading hero images / fonts a moment to settle.
     await new Promise((r) => setTimeout(r, 1500));
-    await page.screenshot({ path: outFile, type: 'png' });
+    await page.screenshot({ path: outFile, type: 'webp', quality: 80 });
     console.log(`  -> ${path.relative(process.cwd(), outFile)}`);
     return true;
   } catch (error) {
@@ -50,7 +50,7 @@ async function main(): Promise<void> {
 
     let ok = 0;
     for (const link of PRIMARY_LINKS) {
-      const outFile = path.join(OUTPUT_DIR, `${previewSlug(link.url)}.png`);
+      const outFile = path.join(OUTPUT_DIR, `${previewSlug(link.url)}.webp`);
       if (await capture(page, link.url, outFile)) ok++;
     }
 
