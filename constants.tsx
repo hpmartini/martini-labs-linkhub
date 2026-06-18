@@ -10,7 +10,7 @@ export const PRIMARY_LINKS: LinkItem[] = [
     color: "cyan",
     logo: "images/logo-rund.webp",
     icon: Box,
-    description: "Unternehmens-Portfolio",
+    description: "Digitalisierungsberatung für Steuerkanzleien",
     preview: "images/previews/martini-labs-de.webp",
   },
   {
