@@ -18,6 +18,25 @@ export interface LinkItem {
   preview?: string; // Path to a locally generated hover-preview screenshot
 }
 
+export interface ProjectItem {
+  title: string;
+  description: string;
+  techStack: string[];
+  url: string; // live link or repo link
+  image?: string; // optional thumbnail (object-cover)
+  isRepo?: boolean; // renders a GitHub label/icon instead of "Live"
+  featured?: boolean;
+  wip?: boolean; // "In Arbeit" badge
+}
+
+export interface ConsultingItem {
+  title: string;
+  description: string;
+  role: string;
+  duration: string;
+  techStack: string[];
+}
+
 export interface Message {
   role: 'user' | 'assistant';
   content: string;

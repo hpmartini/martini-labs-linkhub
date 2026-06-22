@@ -5,15 +5,37 @@ import { SchwälmerBackground } from "./components/SchwälmerBackground";
 import { Profile } from "./components/Profile";
 import { LinkCard } from "./components/LinkCard";
 import { SocialIcons } from "./components/SocialIcons";
+import { ProjectGrid } from "./components/ProjectGrid";
 import { PRIMARY_LINKS, SOCIAL_LINKS } from "./constants";
+import { PRODUCTS, REFERENCES, OPEN_SOURCE, CONSULTING } from "./data/projects";
 
 // Lazy load below-the-fold components for faster initial render
 const AIChat = lazy(() => import("./components/AIChat").then(m => ({ default: m.AIChat })));
 const BlogFeed = lazy(() => import("./components/BlogFeed").then(m => ({ default: m.BlogFeed })));
 const ContactForm = lazy(() => import("./components/ContactForm").then(m => ({ default: m.ContactForm })));
+const ConsultingList = lazy(() => import("./components/ConsultingList").then(m => ({ default: m.ConsultingList })));
 
 // Minimal loading fallback
 const LoadingFallback = () => null;
+
+// Shared section heading — matches the existing "Connect" / "Core Ventures" style
+const SectionHeading: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const theme = useTheme();
+  return (
+    <h2
+      className="text-center uppercase"
+      style={{
+        fontFamily: theme.fonts.heading,
+        color: theme.isDark ? theme.colors.textSecondary : theme.colors.primary,
+        fontSize: theme.isDark ? "10px" : "12px",
+        letterSpacing: theme.isDark ? "0.4em" : "0.1em",
+        fontWeight: theme.isDark ? "normal" : "600",
+      }}
+    >
+      {children}
+    </h2>
+  );
+};
 
 const AppContent: React.FC = () => {
   const [showChat, setShowChat] = useState(false);
@@ -119,6 +141,24 @@ const AppContent: React.FC = () => {
           </div>
         </div>
 
+        {/* Products & Showcases */}
+        <div className="w-full space-y-6">
+          <SectionHeading>Produkte &amp; Showcases</SectionHeading>
+          <ProjectGrid projects={PRODUCTS} columns={2} accent="cyan" />
+        </div>
+
+        {/* Referenzen (Kundenprojekte) */}
+        <div className="w-full space-y-6">
+          <SectionHeading>Referenzen</SectionHeading>
+          <ProjectGrid projects={REFERENCES} columns={2} accent="pink" />
+        </div>
+
+        {/* Open Source */}
+        <div className="w-full space-y-6">
+          <SectionHeading>Open Source</SectionHeading>
+          <ProjectGrid projects={OPEN_SOURCE} columns={1} accent="cyan" />
+        </div>
+
         {/* Action Buttons */}
         <div className="flex flex-col md:flex-row gap-4 w-full justify-center mt-4">
           <button
@@ -160,6 +200,14 @@ const AppContent: React.FC = () => {
         {/* Dynamic Social Feed (LinkedIn/X)
         <SocialFeed />
         */}
+
+        {/* Engineering & Consulting - placed last, right before the contact form */}
+        <div className="w-full space-y-6">
+          <SectionHeading>Engineering &amp; Consulting</SectionHeading>
+          <Suspense fallback={<LoadingFallback />}>
+            <ConsultingList items={CONSULTING} />
+          </Suspense>
+        </div>
 
         {/* Contact Form - lazy loaded */}
         <Suspense fallback={<LoadingFallback />}>
