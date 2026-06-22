@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { ConsultingItem } from "../types";
 import { useTheme } from "../themes/ThemeContext";
-import { ChevronDown, Clock } from "lucide-react";
+import { ChevronDown, Clock, Plus } from "lucide-react";
 
 interface ConsultingListProps {
   items: ConsultingItem[];
+  /** How many rows to show before the "Mehr anzeigen" button. Defaults to 6. */
+  initialCount?: number;
 }
 
 const ConsultingRow: React.FC<{ item: ConsultingItem }> = ({ item }) => {
@@ -113,12 +115,70 @@ const ConsultingRow: React.FC<{ item: ConsultingItem }> = ({ item }) => {
   );
 };
 
-export const ConsultingList: React.FC<ConsultingListProps> = ({ items }) => {
+export const ConsultingList: React.FC<ConsultingListProps> = ({
+  items,
+  initialCount = 6,
+}) => {
+  const theme = useTheme();
+  const [showAll, setShowAll] = useState(false);
+  const accentColor = theme.colors.primary;
+  const accentRgb = theme.colors.primaryRgb;
+
+  const visibleItems = showAll ? items : items.slice(0, initialCount);
+  const hiddenCount = items.length - initialCount;
+  const hasMore = hiddenCount > 0;
+
   return (
     <div className="space-y-3">
-      {items.map((item) => (
+      {visibleItems.map((item) => (
         <ConsultingRow key={item.title} item={item} />
       ))}
+
+      {hasMore && (
+        <button
+          type="button"
+          onClick={() => setShowAll((v) => !v)}
+          className="w-full flex items-center justify-center gap-2 p-3 mt-1 transition-all duration-300 transform hover:-translate-y-0.5 group"
+          style={{
+            borderRadius: theme.borderRadius.md,
+            backgroundColor: theme.isDark
+              ? "rgba(0, 0, 0, 0.3)"
+              : "white",
+            border: `1px solid rgba(${accentRgb}, ${theme.isDark ? 0.3 : 0.4})`,
+            color: theme.isDark ? accentColor : theme.colors.primary,
+            fontFamily: theme.fonts.heading,
+            boxShadow: theme.isDark ? "none" : theme.shadows.card,
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.boxShadow = theme.isDark
+              ? `0 0 15px rgba(${accentRgb}, 0.25)`
+              : theme.shadows.cardHover;
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.boxShadow = theme.isDark
+              ? "none"
+              : theme.shadows.card;
+          }}
+        >
+          {!showAll && (
+            <Plus
+              className="h-4 w-4 transition-transform duration-300"
+              strokeWidth={2}
+            />
+          )}
+          <span className="text-xs font-semibold uppercase tracking-[0.15em]">
+            {showAll
+              ? "Weniger anzeigen"
+              : `${hiddenCount} weitere Projekte`}
+          </span>
+          {showAll && (
+            <ChevronDown
+              className="h-4 w-4 rotate-180 transition-transform duration-300"
+              strokeWidth={2}
+            />
+          )}
+        </button>
+      )}
     </div>
   );
 };

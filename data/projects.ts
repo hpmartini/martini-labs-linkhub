@@ -143,4 +143,84 @@ export const CONSULTING: ConsultingItem[] = [
     duration: "09/2018 – 12/2019",
     techStack: ["Java", "OSGI", "PostgreSQL", "TimescaleDB"],
   },
+  {
+    title: "Anlagenüberwachung",
+    description:
+      "Neuentwicklung eines Webservices zur Überwachung von Geräten an Kunden-Standorten.",
+    role: "Entwickler",
+    duration: "10/2018 – 12/2019",
+    techStack: ["Kotlin", "Angular", "Spring Boot", "Kubernetes"],
+  },
+  {
+    title: "Werkstattportal",
+    description:
+      "Webportal zur Suche und Vermittlung von KFZ-Dienstleistungen, inkl. Scraping-Microservice.",
+    role: "Entwickler, Teamleiter",
+    duration: "09/2018",
+    techStack: ["PHP7", "Laravel"],
+  },
+  {
+    title: "4Mular",
+    description:
+      "Webportal zur automatisierten Anmeldung von Photovoltaikanlagen.",
+    role: "Entwickler",
+    duration: "08/2018",
+    techStack: ["TypeScript", "Kotlin", "Angular 5", "NgRx"],
+  },
+  {
+    title: "Facto",
+    description:
+      "Webplattform zur Rückabwicklung von Lebensversicherungen, inkl. Rechte-/Rollensystem und State-Machine.",
+    role: "Entwickler, Berater",
+    duration: "10/2017 – 07/2018",
+    techStack: ["PHP", "Symfony 3", "AngularJS", "PostgreSQL"],
+  },
+  {
+    title: "Timewarp",
+    description:
+      "Middleware zur Verknüpfung von Zeiterfassungstools und Projektmanagement-Plattformen.",
+    role: "Entwickler, Coach",
+    duration: "09/2017",
+    techStack: ["Kotlin", "Spring Boot", "Angular 5", "PostgreSQL"],
+  },
+  {
+    title: "CI-Plattform",
+    description:
+      "Weiterentwicklung, neue Features und Bug-Fixes für eine CI-Plattform.",
+    role: "Entwickler",
+    duration: "11/2016 – 09/2017",
+    techStack: ["PHP", "Go", "Symfony 2", "AngularJS"],
+  },
+  {
+    title: "Container-Management",
+    description:
+      "Server-Daemon mit CMD-Client zur Bereitstellung von Docker-Machines.",
+    role: "Entwickler",
+    duration: "07/2017",
+    techStack: ["Go", "Unix Shell", "Docker"],
+  },
+  {
+    title: "Matching-Komponente",
+    description:
+      "Neu-Implementierung eines Matching-Algorithmus für eine CI-Plattform.",
+    role: "Entwickler",
+    duration: "04/2017",
+    techStack: ["PHP", "Symfony 2"],
+  },
+  {
+    title: "VNC-Recording",
+    description:
+      "Video-Debugging und Mitschnitt von UI-Tests, inkl. noVNC-Reimplementierung und Reverse-Proxy.",
+    role: "Entwickler",
+    duration: "01/2017 – 02/2017",
+    techStack: ["C", "Node.js", "FFMPEG"],
+  },
+  {
+    title: "Tourismus-Systeme",
+    description:
+      "Mehrere Projekte im Tourismus: Drucksysteme, Reiseunterlagen und Webanwendungen.",
+    role: "Entwickler, Projektleiter",
+    duration: "08/2011 – 10/2016",
+    techStack: ["C#", ".NET", "ASP.NET MVC", "MSSQL"],
+  },
 ];
