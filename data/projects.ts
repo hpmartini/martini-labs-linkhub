@@ -52,6 +52,15 @@ export const PRODUCTS: ProjectItem[] = [
 // ============================================================================
 export const REFERENCES: ProjectItem[] = [
   {
+    title: "Pro. Frauen. Klinik. Schwalm!",
+    description:
+      "Kampagnen-Website der Bürgerinitiative für den Erhalt von Gynäkologie und Geburtshilfe in Schwalmstadt – mit Petition, Presseraum und belegten Zahlen.",
+    techStack: ["Next.js", "Tailwind", "Vercel"],
+    url: "https://pro-frauen-klinik-schwalm.de/",
+    image: "images/projects/pro-frauen-klinik-schwalm.webp",
+    featured: true,
+  },
+  {
     title: "Landgasthof Jägerhof",
     description: "Neuer Webauftritt mit Fokus auf lokale SEO.",
     techStack: ["Next.js", "Tailwind", "SEO"],
