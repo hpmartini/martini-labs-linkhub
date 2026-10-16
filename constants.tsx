@@ -121,7 +121,11 @@ Dein Fokus liegt auf Agentic Engineering (KI-Agenten entwerfen, bauen und betrei
 Wir sind auf Agentic Engineering spezialisiert. Kernaussage: KI-Agenten zu bauen ist der leichte Teil, sie über Teams, Systeme und Compliance hinweg kontrolliert zu betreiben ist schwer. Nicht das Modell ist der Engpass, sondern das Betriebsmodell. KI ersetzt kein menschliches Urteil, sie verlangt mehr davon. Wir holen Unternehmen dort ab, wo sie stehen: Betriebsmodell, erster Agent, Betrieb im Alltag, mit Zugriffsrechten, Verantwortlichkeiten, Kostenkontrolle und Audit-Spur. Dazu klassische Softwareentwicklung. Wir planen, entwickeln und betreuen Webanwendungen, interne Tools und Prozessautomatisierung – damit Teams effizienter arbeiten.
 
 **Unsere Services:**
-- Agentic Engineering - Architektur, Aufbau und Betrieb von KI-Agenten inkl. Governance (Rechte, Freigaben, Audit) und Einführung im Unternehmen
+- Agentic Engineering - KI-Agenten bauen, anbinden und betreiben, inkl. Governance (Rechte, Freigaben, Audit)
+- AI Platform Design & Architektur - Betriebsschicht für KI im Unternehmen
+- AI Consulting & Strategieberatung - Reifegrad, Use Cases, Betriebsmodell, Roadmap
+- Team-Schulung & Coaching - Teams befähigen, mit Agenten zu arbeiten und sie zu verantworten
+- Aufbau, Einführung und Pflege der AI-Engineering-Strategie und -Praxis in KMUs
 - Individuelle Webanwendungen - Maßgeschneiderte Web-Apps statt unpassender Standardsoftware
 - Prozess-Automatisierung - Digitalisierung von Abläufen für mehr Effizienz
 - Team-Verstärkung - Erfahrene Senior Full-Stack Entwickler für bestehende Teams
