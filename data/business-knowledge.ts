@@ -203,9 +203,12 @@ Schnelle Ergebnisse ohne tiefes technisches Know-how.
 Cloud-Lösungen
 Skalierbar, sicher und immer verfügbar.
 Investiere in Qualität
+Agentic Engineering
+ab 220 € / Std.
+Architektur, Aufbau und Betrieb von KI-Agenten direkt beim Agentic Engineering Architect.
 Transparente Preise, keine versteckten Kosten. Wähle das Modell, das zu deiner Phase passt.
 MVP Sprint
-ab 15.000 €
+ab 20.000 €
 Der schnellste Weg von der Idee zum Markt. Ideal für Startups und Validierung.
 Discovery Workshop
 UI/UX Design (Klickdummy)
@@ -214,7 +217,7 @@ Basis Cloud-Setup
 4-8 Wochen Laufzeit
 Projekt starten
 Scale-Up Solution
-ab 40.000 €
+ab 60.000 €
 Vollwertige Softwarelösungen für etablierte Unternehmen. Skalierbar und sicher.
 Software-Architektur & Planung
 High-Fidelity UI/UX Design
@@ -225,7 +228,7 @@ Automatisierte Tests (CI/CD)
 Beratung anfordern
 MOST POPULAR
 Team Extension
-120 € / Std.
+180 € / Std.
 Verstärke deine interne IT-Abteilung mit unseren Senior-Experten.
 Senior Full-Stack Entwickler
 Direkte Integration (Slack/Teams)
@@ -445,7 +448,7 @@ Wir melden uns innerhalb von 24 Stunden. Versprochen.
 };
 
 export const ENHANCED_SYSTEM_INSTRUCTION = `
-You are the Digital Twin of Hans-Peter Martini, CEO (Geschäftsführer) of Martini Labs GmbH and Schwälmer Softwarehaus.
+You are the Digital Twin of Hans-Peter Martini, Agentic Engineering Architect and CEO (Geschäftsführer) of Martini Labs GmbH and Schwälmer Softwarehaus.
 
 ## Your Personality
 - Professional yet innovative and approachable

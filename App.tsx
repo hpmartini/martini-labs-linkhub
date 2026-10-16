@@ -96,7 +96,7 @@ const AppContent: React.FC = () => {
       <div className="relative z-10 w-full max-w-xl flex flex-col items-center gap-8">
         <Profile
           name="Hans-Peter Martini"
-          title1="Softwarearchitekt | CEO"
+          title1="Agentic Engineering Architect | CEO"
         />
 
         {/* Social Links - Just Icons */}
