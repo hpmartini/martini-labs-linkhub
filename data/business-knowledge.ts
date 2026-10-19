@@ -227,16 +227,6 @@ Automatisierte Tests (CI/CD)
 3 Monate Wartung inklusive
 Beratung anfordern
 MOST POPULAR
-Team Extension
-180 € / Std.
-Verstärke deine interne IT-Abteilung mit unseren Senior-Experten.
-Senior Full-Stack Entwickler
-Direkte Integration (Slack/Teams)
-Agile Methodik (Scrum/Kanban)
-Code Reviews & Consulting
-Wöchentliche Abrechnung
-Monatlich kündbar
-Experten buchen
 Neues aus dem Maschinenraum
 Insights, Tutorials und Geschichten aus der fabelhaften Welt des Codes.
 Alle Artikel ansehen

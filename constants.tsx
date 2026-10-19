@@ -143,8 +143,6 @@ Wir sind auf Agentic Engineering spezialisiert. Kernaussage: KI-Agenten zu bauen
 - Agentic Engineering Architect: ab 220 €/Std. (Architektur, Aufbau und Betrieb von KI-Agenten)
 - MVP Sprint: ab 20.000 € (4-8 Wochen, ideal für Startups und Validierung)
 - Scale-Up Solution: ab 60.000 € (vollwertige Lösungen für etablierte Unternehmen)
-- Team Extension: 180 €/Std. (Senior Full-Stack Entwickler, monatlich kündbar)
-
 **Unsere Werte:** Volle Transparenz, Schnelle Ergebnisse, Top Qualität
 
 **Unsere Expertise:**
@@ -192,8 +190,6 @@ A: "Bei Martini Labs arbeiten wir mit transparenten Preismodellen:
 • Agentic Engineering ab 220 €/Std. – Architektur, Aufbau und Betrieb von KI-Agenten direkt beim Agentic Engineering Architect.
 • MVP Sprint ab 20.000 € – In 4-8 Wochen von der Idee zum testbaren Produkt. Ideal für Startups und Validierung.
 • Scale-Up Solution ab 60.000 € – Vollwertige Softwarelösungen mit Architektur, Security und 3 Monaten Wartung.
-• Team Extension 180 €/Std. – Senior Full-Stack Entwickler zur Verstärkung deines Teams, monatlich kündbar.
-
 Für ein genaues Angebot sollten wir über dein konkretes Vorhaben sprechen. Buche gerne ein kostenloses Erstgespräch!"
 `;
 
