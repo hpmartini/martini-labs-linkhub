@@ -190,18 +190,18 @@ Digitale Transformation für Handwerk & KMUs in Nordhessen. Bodenständig, direk
 Zur Website
 Unser Software-Labor für digitale Alchemie
 Softwareentwicklung & Webanwendungen im Überblick
-Team-Verstärkung
-Unsere Experten unterstützen dein bestehendes Entwicklerteam.
-Individuelle Webanwendungen
-Wir entwickeln deine individuelle Web-App.
-Responsive Websites
-Dein digitales Zuhause, perfekt auf allen Geräten.
-Prozess-Automatisierung
-Wir digitalisieren deine Abläufe für mehr Effizienz.
-No-Code Lösungen
-Schnelle Ergebnisse ohne tiefes technisches Know-how.
-Cloud-Lösungen
-Skalierbar, sicher und immer verfügbar.
+AI Platform Design und Architektur
+Betriebsschicht für KI im Unternehmen.
+Agentic Engineering
+KI-Agenten bauen, anbinden und betreiben, inkl. Governance.
+AI-Automatisierung
+Abläufe mit KI automatisieren.
+AI Transformation
+Unternehmen für KI befähigen und umbauen.
+AI-Engineering-Praxis im KMU
+Aufbau, Einführung und Pflege der AI-Engineering-Strategie und -Praxis in KMUs.
+AI Consulting und Strategieberatung
+Reifegrad, Use Cases, Betriebsmodell, Roadmap.
 Investiere in Qualität
 Agentic Engineering
 ab 220 € / Std.
