@@ -190,22 +190,25 @@ Digitale Transformation für Handwerk & KMUs in Nordhessen. Bodenständig, direk
 Zur Website
 Unser Software-Labor für digitale Alchemie
 Softwareentwicklung & Webanwendungen im Überblick
-Team-Verstärkung
-Unsere Experten unterstützen dein bestehendes Entwicklerteam.
-Individuelle Webanwendungen
-Wir entwickeln deine individuelle Web-App.
-Responsive Websites
-Dein digitales Zuhause, perfekt auf allen Geräten.
-Prozess-Automatisierung
-Wir digitalisieren deine Abläufe für mehr Effizienz.
-No-Code Lösungen
-Schnelle Ergebnisse ohne tiefes technisches Know-how.
-Cloud-Lösungen
-Skalierbar, sicher und immer verfügbar.
+AI Platform Design und Architektur
+Betriebsschicht für KI im Unternehmen.
+Agentic Engineering
+KI-Agenten bauen, anbinden und betreiben, inkl. Governance.
+AI-Automatisierung
+Abläufe mit KI automatisieren.
+AI Transformation
+Unternehmen für KI befähigen und umbauen.
+AI-Engineering-Praxis im KMU
+Aufbau, Einführung und Pflege der AI-Engineering-Strategie und -Praxis in KMUs.
+AI Consulting und Strategieberatung
+Reifegrad, Use Cases, Betriebsmodell, Roadmap.
 Investiere in Qualität
+Agentic Engineering
+ab 220 € / Std.
+Architektur, Aufbau und Betrieb von KI-Agenten direkt beim Agentic Engineering Architect.
 Transparente Preise, keine versteckten Kosten. Wähle das Modell, das zu deiner Phase passt.
 MVP Sprint
-ab 15.000 €
+ab 20.000 €
 Der schnellste Weg von der Idee zum Markt. Ideal für Startups und Validierung.
 Discovery Workshop
 UI/UX Design (Klickdummy)
@@ -214,7 +217,7 @@ Basis Cloud-Setup
 4-8 Wochen Laufzeit
 Projekt starten
 Scale-Up Solution
-ab 40.000 €
+ab 60.000 €
 Vollwertige Softwarelösungen für etablierte Unternehmen. Skalierbar und sicher.
 Software-Architektur & Planung
 High-Fidelity UI/UX Design
@@ -224,16 +227,6 @@ Automatisierte Tests (CI/CD)
 3 Monate Wartung inklusive
 Beratung anfordern
 MOST POPULAR
-Team Extension
-120 € / Std.
-Verstärke deine interne IT-Abteilung mit unseren Senior-Experten.
-Senior Full-Stack Entwickler
-Direkte Integration (Slack/Teams)
-Agile Methodik (Scrum/Kanban)
-Code Reviews & Consulting
-Wöchentliche Abrechnung
-Monatlich kündbar
-Experten buchen
 Neues aus dem Maschinenraum
 Insights, Tutorials und Geschichten aus der fabelhaften Welt des Codes.
 Alle Artikel ansehen
@@ -445,7 +438,7 @@ Wir melden uns innerhalb von 24 Stunden. Versprochen.
 };
 
 export const ENHANCED_SYSTEM_INSTRUCTION = `
-You are the Digital Twin of Hans-Peter Martini, CEO (Geschäftsführer) of Martini Labs GmbH and Schwälmer Softwarehaus.
+You are the Digital Twin of Hans-Peter Martini, Agentic Engineering Architect and CEO (Geschäftsführer) of Martini Labs GmbH and Schwälmer Softwarehaus.
 
 ## Your Personality
 - Professional yet innovative and approachable
