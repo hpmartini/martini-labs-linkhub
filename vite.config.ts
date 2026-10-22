@@ -3,16 +3,19 @@ import path from 'path';
 import { defineConfig, loadEnv, Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// Plugin to inject the synthwave favicon (the Schwälmer build gets its icons from schwaelmerMetaPlugin)
+const SYNTHWAVE_ICON_LINKS = [
+  '<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-synthwave-32.png">',
+  '<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-synthwave-192.png">',
+  '<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-synthwave.png">',
+].join('\n');
+
+// Plugin to inject the synthwave icons (the Schwälmer build gets its icons from schwaelmerMetaPlugin)
 function faviconPlugin(theme: string): Plugin {
   return {
     name: 'favicon-plugin',
     transformIndexHtml(html) {
       if (theme === 'schwaelmer') return html;
-      return html.replace(
-        '</head>',
-        '<link rel="icon" type="image/png" href="/images/favicon_synthwave.png">\n</head>'
-      );
+      return html.replace('</head>', `${SYNTHWAVE_ICON_LINKS}\n</head>`);
     }
   };
 }
