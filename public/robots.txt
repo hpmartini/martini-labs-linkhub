@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://martini-labs.de/sitemap.xml
+Sitemap: https://hpm.zone/sitemap.xml
