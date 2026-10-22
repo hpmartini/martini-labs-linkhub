@@ -3,18 +3,15 @@ import path from 'path';
 import { defineConfig, loadEnv, Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// Plugin to inject theme-specific favicon
+// Plugin to inject the synthwave favicon (the Schwälmer build gets its icons from schwaelmerMetaPlugin)
 function faviconPlugin(theme: string): Plugin {
-  const favicon = theme === 'schwaelmer'
-    ? '/images/favicon_schwaelmer.png'
-    : '/images/favicon_synthwave.png';
-
   return {
     name: 'favicon-plugin',
     transformIndexHtml(html) {
+      if (theme === 'schwaelmer') return html;
       return html.replace(
         '</head>',
-        `<link rel="icon" type="image/png" href="${favicon}">\n</head>`
+        '<link rel="icon" type="image/png" href="/images/favicon_synthwave.png">\n</head>'
       );
     }
   };
@@ -28,6 +25,11 @@ const SCHWAELMER_OG_DESCRIPTION =
 const SCHWAELMER_OG_ALT =
   'Hans-Peter Martini, Schwälmer Softwarehaus: Die Schwalm digital neu denken und gemeinsam gestalten.';
 const SCHWAELMER_ORIGIN = 'https://schwalm.it';
+const SCHWAELMER_ICON_LINKS = [
+  '<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-schwaelmer-32.png">',
+  '<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-schwaelmer-192.png">',
+  '<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-schwaelmer.png">',
+].join('\n');
 
 // Der Schwälmer-Build läuft unter schwalm.it; index.html trägt die Meta-Tags der Hauptseite (hpm.zone).
 // Fehlt eine Ersetzung, schlägt der Build fehl, damit keine Hauptseiten-Tags unter schwalm.it landen.
@@ -58,10 +60,11 @@ function schwaelmerMetaPlugin(theme: string): Plugin {
     },
     transformIndexHtml(html) {
       if (!active) return html;
-      return replacements.reduce((out, [from, to]) => {
+      const meta = replacements.reduce((out, [from, to]) => {
         if (!out.match(from)) throw new Error(`schwaelmer-meta-plugin: Muster nicht gefunden: ${from}`);
         return out.replace(from, to);
       }, html);
+      return meta.replace('</head>', `${SCHWAELMER_ICON_LINKS}\n</head>`);
     },
     closeBundle() {
       if (!active) return;
