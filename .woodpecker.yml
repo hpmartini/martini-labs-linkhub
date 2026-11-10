@@ -1,0 +1,19 @@
+# Ersetzt GitHub Actions (Account-weite Budget-Sperre, hpmartini/TexBase#357): nur Typecheck, nur beim PR.
+# Das Repo hat kein Lint-Skript; geprüft wird nur tsc --noEmit gegen die vorhandene tsconfig.json.
+when:
+  - event: pull_request
+    branch: main
+
+steps:
+  - name: install
+    image: node:22-bookworm
+    environment:
+      # Chromium wird nur für scripts/generate-previews.ts gebraucht, nicht für den Typecheck.
+      PUPPETEER_SKIP_DOWNLOAD: 'true'
+    commands:
+      - npm ci
+
+  - name: typecheck
+    image: node:22-bookworm
+    commands:
+      - npx tsc --noEmit
