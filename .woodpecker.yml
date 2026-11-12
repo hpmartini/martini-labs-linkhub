@@ -1,5 +1,5 @@
-# Ersetzt GitHub Actions (Account-weite Budget-Sperre, hpmartini/TexBase#357): nur Typecheck, nur beim PR.
-# Das Repo hat kein Lint-Skript; geprüft wird nur tsc --noEmit gegen die vorhandene tsconfig.json.
+# Ersetzt GitHub Actions (Account-weite Budget-Sperre, hpmartini/TexBase#357): Typecheck + Bun-Builds, nur beim PR.
+# Das Repo hat kein Lint-Skript; geprüft werden tsc --noEmit und die drei Theme-Builds (DoD aus #2).
 when:
   - event: pull_request
     branch: main
@@ -8,7 +8,7 @@ steps:
   - name: install
     image: oven/bun:1.4.4
     environment:
-      # Chromium wird nur für scripts/generate-previews.ts gebraucht, nicht für den Typecheck.
+      # Chromium wird nur für scripts/generate-previews.ts gebraucht, nicht für Typecheck/Build.
       PUPPETEER_SKIP_DOWNLOAD: 'true'
     commands:
       - bun install --frozen-lockfile
@@ -17,3 +17,10 @@ steps:
     image: oven/bun:1.4.4
     commands:
       - bunx tsc --noEmit
+
+  - name: build
+    image: oven/bun:1.4.4
+    commands:
+      - bun run build
+      - bun run build:synthwave
+      - bun run build:schwaelmer
