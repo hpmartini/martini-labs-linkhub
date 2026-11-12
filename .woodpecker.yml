@@ -6,14 +6,14 @@ when:
 
 steps:
   - name: install
-    image: node:22-bookworm
+    image: oven/bun:1.4.4
     environment:
       # Chromium wird nur für scripts/generate-previews.ts gebraucht, nicht für den Typecheck.
       PUPPETEER_SKIP_DOWNLOAD: 'true'
     commands:
-      - npm ci
+      - bun install --frozen-lockfile
 
   - name: typecheck
-    image: node:22-bookworm
+    image: oven/bun:1.4.4
     commands:
-      - npx tsc --noEmit
+      - bunx tsc --noEmit
