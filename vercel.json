@@ -1,4 +1,11 @@
 {
+  "bunVersion": "1.4.4",
+  "installCommand": "bun install --frozen-lockfile",
+  "build": {
+    "env": {
+      "PUPPETEER_SKIP_DOWNLOAD": "true"
+    }
+  },
   "rewrites": [
     { "source": "/hi", "destination": "/index.html" }
   ]

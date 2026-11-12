@@ -54,6 +54,14 @@ bun run dev
 bun run build
 ```
 
+## ☁️ Deployment (Vercel)
+
+Der Production-Build läuft mit **Bun 1.4.4** (gleiche Version wie CI und `packageManager` in `package.json`):
+
+- `vercel.json`: `bunVersion`, `installCommand: bun install --frozen-lockfile`
+- `PUPPETEER_SKIP_DOWNLOAD=true` – Chromium wird nur für `bun run generate:previews` lokal gebraucht, nicht im Vercel-Build
+- Jeder Push auf `main` erzeugt ein Production-Deploy (Projekte `martini-labs-linkhub` und `schwaelmer-linkhub`)
+
 ## 📁 Projektstruktur
 
 ```
