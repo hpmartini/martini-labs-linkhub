@@ -1,6 +1,6 @@
 // Auto-generated business knowledge - DO NOT EDIT MANUALLY
 // Generated on: 2026-01-15T13:30:15.522Z
-// Run `npx ts-node scripts/scrape-knowledge.ts` to regenerate
+// Run `bun scripts/scrape-knowledge.ts` to regenerate
 
 export const BUSINESS_KNOWLEDGE = {
   martiniLabs: {

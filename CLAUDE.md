@@ -10,16 +10,16 @@ Martini Labs Linkhub is a personal link-in-bio style landing page for Hans-Peter
 
 ```bash
 # Install dependencies
-npm install
+bun install
 
 # Run development server (http://localhost:3000)
-npm run dev
+bun run dev
 
 # Build for production
-npm run build
+bun run build
 
 # Preview production build
-npm run preview
+bun run preview
 ```
 
 ## Environment Setup

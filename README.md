@@ -32,26 +32,26 @@ Build-Varianten für verschiedene Themes:
 
 ```bash
 # Standard (auto-detect)
-npm run build
+bun run build
 
 # Synthwave Theme
-npm run build:synthwave
+bun run build:synthwave
 
 # Schwälmer Theme  
-npm run build:schwaelmer
+bun run build:schwaelmer
 ```
 
 ## 🚀 Entwicklung
 
 ```bash
 # Dependencies installieren
-npm install
+bun install
 
 # Entwicklungsserver
-npm run dev
+bun run dev
 
 # Produktions-Build
-npm run build
+bun run build
 ```
 
 ## 📁 Projektstruktur

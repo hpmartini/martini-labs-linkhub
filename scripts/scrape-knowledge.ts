@@ -80,7 +80,7 @@ function generateKnowledgeFile(martiniContent: PageContent[], schwaelmerContent:
 
   return `// Auto-generated business knowledge - DO NOT EDIT MANUALLY
 // Generated on: ${new Date().toISOString()}
-// Run \`npx ts-node scripts/scrape-knowledge.ts\` to regenerate
+// Run \`bun scripts/scrape-knowledge.ts\` to regenerate
 
 export const BUSINESS_KNOWLEDGE = {
   martiniLabs: {

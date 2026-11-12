@@ -9,7 +9,7 @@
     "build:synthwave": "VITE_THEME=synthwave vite build",
     "build:schwaelmer": "VITE_THEME=schwaelmer vite build",
     "preview": "vite preview",
-    "generate:previews": "tsx scripts/generate-previews.ts"
+    "generate:previews": "bun scripts/generate-previews.ts"
   },
   "dependencies": {
     "@google/genai": "^1.35.0",
@@ -28,8 +28,11 @@
     "postcss": "^8.5.15",
     "puppeteer": "^24.35.0",
     "tailwindcss": "^3.4.19",
-    "tsx": "^4.21.0",
     "typescript": "~5.8.2",
     "vite": "^6.2.0"
-  }
+  },
+  "packageManager": "bun@1.4.4",
+  "trustedDependencies": [
+    "puppeteer"
+  ]
 }
